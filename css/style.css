@@ -2,9 +2,19 @@
 	padding: 0;
 	margin: 0;
 	text-decoration: none;
+	outline: none;
 }
 a:hover{
 	color: blue;
+	text-decoration: none;
+}
+h2,h3,h4{
+	padding-bottom: 20px;
+	color: #666
+}
+p{
+	padding: 20px;
+	color: #888888;
 }
 body{
 	background: #F4F4F4;
@@ -44,12 +54,10 @@ body{
 }
 .content-sm{
 	padding-bottom: 20px;
+	background: #fff;
 }
 .content-sm>div{
-	background: #fff;
-	border-radius: 10px;
-	border: 1px solid #ccc;
-	min-height: 50vh;
+	border-radius: 5px;
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
@@ -156,10 +164,38 @@ ul li ul li:hover {
 #left_manu>ul>li:nth-child(2), #left_manu>ul>li:nth-child(11)  {
    border-bottom: 1px solid #ccc;
 }
+#user-info{
+	background: #fff;
+	margin-top: 32px;
+}
+.user-top-manu-li-hover{
+	border: none;
+	height: 2.3em;
+	border-top: 1px solid blue;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	background: #fff;
+	text-align: center;
+}
+.user-top-manu-li{
+	border: none;
+	background: none;
+	height: 2em;
+}
+.border{
+	border-bottom: 1px solid #ccc;
+}
+.border-l{
+	border-left: 1px solid #ccc;
+	height: 100%;
+}
 #footer{
 	margin-top: 20px;
 	background: #fff;
 	min-height: 6vh;
+}
+.vallet{
+	display: none;
 }
 footer>div{
 	line-height: 6vh;

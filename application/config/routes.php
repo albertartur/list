@@ -55,4 +55,10 @@ $route['login'] = 'home/login';
 $route['register'] = 'home/register';
 $route['lostpwd'] = 'home/lostpwd';
 $route['verification'] = 'home/verification';
+$route['my'] = 'home/my';
+$route['messages'] = 'home/messages';
+$route['wallet'] = 'home/wallet';
+$route['profile'] = 'home/profile';
+
+
 $route['translate_uri_dashes'] = FALSE;
