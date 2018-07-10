@@ -14,7 +14,7 @@
 	Section:<input type="number" id="cat_section">
 	<input type="button" id="add_cat" value="ADD">
 	<br><br>
-	<table border="1" cellpadding="40">
+	<table border="1" cellpadding="13">
 		<tr>
 			<th>ID</th>
 			<th>Name</th>
@@ -30,7 +30,7 @@
 				<td  contenteditable="true" class="section"><?php echo $value['glob'];?></td>
 				<td><input type="button" class="update" value="Update"></td>
 				<td><input type="button" class="delete" value="Delete"></td>
-				<td><input type="button" class="show" value="Show"></td>
+				<td><a href="<?=base_url("Admin/subcat/".$value['id'].'"')?>"><input type="button" class="show" value="Show"></a></td>
 			</tr>
 		<?php endforeach; ?>
 	</table>

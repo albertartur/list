@@ -36,7 +36,9 @@ class Migration_add_users extends CI_Migration {
 			'data_of_signup'=>array(
 				'type'=>'TIMESTAMP'
 
-			)
+			),
+			// 'sequarity'=>array(
+			//       'type'  )
 
 		));
 		$this->dbforge->add_key('id', TRUE);

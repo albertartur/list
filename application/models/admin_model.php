@@ -22,4 +22,17 @@ class Admin_model extends CI_Model{
 		$this->db->where('id',$id);
 		$this->db->update('categories',$data);
 	}
+	public function get_subcat($id){
+		$query=$this->db->get_where('subcategories',array('cat_id'=>$id))->result_array();
+		return $query;
+	}
+	public function insert_subcat($name,$part,$cat_id){
+		$this->db->insert('subcategories',array('id'=>Null,'name'=> $name,'bajin'=>$part, 'cat_id'=>$cat_id));
+	}
+	public function get_parts(){
+		$this->db->distinct();
+		$this->db->select('bajin');
+		$query = $this->db->get('subcategories')->result_array();
+		return $query;
+	}
 }

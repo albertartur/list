@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('Доступ к скриптам запрещен.');
 
-class Migration_add_product extends CI_Migration {
+class Migration_add_products extends CI_Migration {
 
 	public function up()
 	{
@@ -21,21 +21,12 @@ class Migration_add_product extends CI_Migration {
 				'unsigned' => TRUE
 				
 			),
-			'price'=> array(
-			      'type'=>'INT'    
-			   ),
 			'description'=> array(
 			      'type'=> 'CHAR',
 			      'unsigned' => TRUE,
 
 			   ),
-			'image'=>array(
-			      'type'=> 'VARCHAR',
-			      'unsigned' => TRUE,
-			      'constraint' => '70'
-
-			 ),
-
+			
 			'location'=>array(
 				'type'=>'VARCHAR',
 				'constraint' => '50'
@@ -52,7 +43,7 @@ class Migration_add_product extends CI_Migration {
 
 			'info_array'=>array(
 			     'type'=>'VARCHAR',
-			     'constraint' => '50'
+			     'constraint' => '200'
 
 			 ),
 			'us_id'=>array(

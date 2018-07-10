@@ -44,4 +44,21 @@ $(document).ready(function(){
 			}
 		})
 	})
+	$('#add').click(function(){
+		let name=$('#name').val();
+		let part=$('#part').val();
+		let cat_id=$('#cat_id').val();
+		$.ajax({
+			url:base_url+"Admin/Add_subcat",
+			type:'post',
+			data:{
+				name:name,
+				part:part,
+				cat_id:cat_id
+			},
+			success:function(elem){
+				location.reload();
+			}
+		})
+	})
 })
