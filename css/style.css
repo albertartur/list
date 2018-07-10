@@ -1,0 +1,166 @@
+*{
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+}
+a:hover{
+	color: blue;
+}
+body{
+	background: #F4F4F4;
+}
+#top_manu{
+	background: #fff;
+	padding-top: 5px;
+	padding-left: 5px;
+	border-bottom: 1px solid #ccc;
+}
+.navbar-brand{
+	padding: 10px 15px;
+}
+.top_manu_icon{
+	background: black;
+	color: black;
+}
+#content{
+	padding-top: 65px;
+	min-height: 88vh;
+}
+.main{
+	padding-top: 85px;
+	min-height: 88vh;
+}
+#main_reclame>img{
+	width: 50%;
+}
+#left_manu{
+	border:1px solid #ccc;
+	background: #fff;
+	text-align: left;
+	padding-left: 10px;
+}
+#left_reclame>img{
+	width: 100%;
+}
+.content-sm{
+	padding-bottom: 20px;
+}
+.content-sm>div{
+	background: #fff;
+	border-radius: 10px;
+	border: 1px solid #ccc;
+	min-height: 50vh;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+#fb-log{
+	border-bottom: 1px solid #ccc;
+}
+#user_login{
+	padding-top: 20px;
+}
+#user_login>div{
+	padding-top: 20px;
+}
+.register-info>li{
+	display: list-item;
+	max-width: 35vw;
+	text-align: left;
+	padding-left: 30px;
+	padding-top: 26.9px;
+
+}
+.input{
+	width: 70%;
+	margin-top: 8px;
+	border-radius: 5px;
+	height: 2.2em;
+	outline: none;
+	border: 1px solid #ccc;
+	text-indent: 20px;
+}
+.input-sm{
+	width: 30%;
+	margin-top: 8px;
+	border-radius: 5px;
+	height: 2.2em;
+	outline: none;
+	border: 1px solid #ccc;
+	text-indent: 20px;
+}
+.btn-success{
+	margin-top: 20px;
+}
+.btn-a{
+	border: #fff;
+	background: #4848F4;
+	color: #fff;
+	border-radius: 5px;
+	padding: 10px;
+	text-decoration: none;
+
+}
+.btn-a:hover{
+	text-decoration: none;
+	background: #6760F4;
+	color: #fff;
+}
+.txt{
+	margin-top: 20px;
+	margin-left: 30px;
+}
+#left_manu>ul>li>a{
+	padding-right: 200px;
+}
+ul li{
+	list-style: none;
+	transition: 1s ease-out;
+	padding-top: 5px;
+	padding-bottom: 5px;
+
+}
+ul li a{
+	width: 200px;
+	padding-right: 2px;
+	color: black
+}
+ul li:hover a{
+	text-decoration: none;
+}
+
+ul li:hover ul {
+	display: block;
+}
+ul li ul {
+	transition: 1s ease;
+  position: absolute;
+  left: 269px;
+  top: 0;
+  min-width: 400px;
+  height: 404px;
+  border: 0.5px solid #ccc;
+  background: #fff;
+  display: none;
+}
+ul li ul li { 
+  background: #fff; 
+  display: block; 
+}
+ul li ul li a {
+	display:block !important;
+} 
+ul li ul li:hover {
+	background: #fff;
+}
+
+#left_manu>ul>li:nth-child(2), #left_manu>ul>li:nth-child(11)  {
+   border-bottom: 1px solid #ccc;
+}
+#footer{
+	margin-top: 20px;
+	background: #fff;
+	min-height: 6vh;
+}
+footer>div{
+	line-height: 6vh;
+}
