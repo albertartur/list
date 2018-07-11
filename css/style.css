@@ -4,6 +4,9 @@
 	text-decoration: none;
 	outline: none;
 }
+body{
+	background: #F4F4F4;
+}
 a:hover{
 	color: blue;
 	text-decoration: none;
@@ -16,8 +19,8 @@ p{
 	padding: 20px;
 	color: #888888;
 }
-body{
-	background: #F4F4F4;
+label{
+	    margin-bottom: 25px;
 }
 #top_manu{
 	background: #fff;
@@ -107,6 +110,11 @@ body{
 	padding: 10px;
 	text-decoration: none;
 
+}
+.a-manu{
+	display: block;
+	padding-top: 10px;
+	color: black;
 }
 .btn-a:hover{
 	text-decoration: none;

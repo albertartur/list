@@ -11,7 +11,7 @@
 			<a href="<?= base_url('messages'); ?>" class="user-top-manu-li col-md-2">Հաղորդագրություններ</a>
 			<a href="<?= base_url('wallet'); ?>" class="user-top-manu-li<?= $x;?> col-md-2">Դրամապանակ</a>
 			<a href="<?= base_url('profile'); ?>" class="user-top-manu-li col-md-2">Կարգավորումներ</a>
-	</div>
+			<div class="col-md-4 text-right">user@mail.ru <span class="glyphicon glyphicon-log-out"></span></div>	</div>
 	<div class="container content-sm">
 		<div id="user-info">
 			<div class="col-md-3">
