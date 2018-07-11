@@ -30,18 +30,30 @@ class Migration_add_users extends CI_Migration {
 			'image'=>array(
 			      'type'=> 'VARCHAR',
 			      'unsigned' => TRUE,
-			      'constraint' => '70'
+			      'constraint' => '150'
 
 			 ),
 			'data_of_signup'=>array(
 				'type'=>'TIMESTAMP'
 
 			),
-			// 'sequarity'=>array(
-			//       'type'  )
-
+			'wallet_number'=>array(
+			        'type'=>'INT',
+			         'constraint'=>'6',
+			         // 'auto_increment' => TRUE
+			         
+			),
+			'contact_information'=>array(
+			         'type' => 'VARCHAR',
+				    'constraint' => '250'
+				),
+			'location_user'=>array(
+				'type'=>'VARCHAR',
+				'constraint' => '70'
+			)
 		));
 		$this->dbforge->add_key('id', TRUE);
+		// $this->dbforge->add_key('wallet_number', TRUE);
 		$this->dbforge->create_table('users');
 	}
 

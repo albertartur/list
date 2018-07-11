@@ -10,21 +10,24 @@
 <body>
 	<?php  $a=explode('/',$_SERVER['REQUEST_URI']);
 	$cat_id=$a[count($a)-1];
-	print_r( $parts);
+	// print_r( $parts);
 	?>
 	<input type="hidden" name="" id="cat_id" value=<?php echo "$cat_id"; ?> >
-	<input type="text" name="" id='name'>
+	Name:<input type="text" name="" id='name'>
 	<select>
 	<?php 
-	foreach ($parts[0] as $value) {
+	 for($i=0;$i<count($parts);$i++){
+	foreach ($parts[$i] as $value) {
 		echo "<option> $value </option>";
 	}
+    }
 	?>
-	<option >jkhg</option>	
+	<option >Other parts</option>	
 	</select>
-	<input type="text" name="" id='part'>
+	Part:<input type="text" name="" id='part'>
 	<button id='add'>ADD</button>
-
+  <br><br>
+  
 	<table border="1" cellpadding="13">
 		<tr>
 			<th>ID</th>
@@ -37,18 +40,15 @@
 		</tr>
 		<?php foreach ($all as $value) :?>
 			<tr>
-				<td contenteditable="true" class="id"><?php echo $value['id'];?></td>
-				<td  contenteditable="true" class="name"><?php echo $value['name'];?></td>
-				<td  contenteditable="true" class="section"><?php echo $value['cat_id'];?></td>
-				<td  contenteditable="true" class="section"><?php echo $value['bajin'];?></td>
-				<td><input type="button" class="update" value="Update"></td>
-				<td><input type="button" class="delete" value="Delete"></td>
-				<!-- <td><a href="<?=base_url("Admin/subcat/".$value['id'].'"')?>"><input type="button" class="show" value="Show"></a></td> -->
+				<td contenteditable="true" class="sub_id"><?php echo $value['id'];?></td>
+				<td  contenteditable="true" class="sub_name"><?php echo $value['name'];?></td>
+				<td  contenteditable="true" class="cat_id"><?php echo $value['cat_id'];?></td>
+				<td  contenteditable="true" class="sub_section"><?php echo $value['bajin'];?></td>
+				<td><input type="button" class="sub_update" value="Update"></td>
+				<td><input type="button" class="sub_delete" value="Delete"></td>
+				<td><input type="button" class="statement_show" value="Show"></td>
 			</tr>
 		<?php endforeach; ?>
 	</table>
 </body>
 </html>
-<?php
-echo "dfh";
-//print_r($data['all']);

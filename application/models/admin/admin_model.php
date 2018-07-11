@@ -13,6 +13,7 @@ class Admin_model extends CI_Model{
 		$this->db->insert('categories',array('id'=>Null,'name'=> $name,'glob'=>$section));
 	}
 	public function delete_categorie($id){
+		$this->db->delete('subcategories',array('cat_id'=>$id));
 		$this->db->delete('categories',array('id'=>$id));
 	}
 	public function update_categorie($id,$name,$section){
@@ -34,5 +35,16 @@ class Admin_model extends CI_Model{
 		$this->db->select('bajin');
 		$query = $this->db->get('subcategories')->result_array();
 		return $query;
+	}
+	public function delete_subcategorie($sub_id){
+		$this->db->delete('subcategories',array('id'=>$sub_id));
+	}
+	public function update_subcategorie($sub_id,$cat_id,$name,$section){
+		$data=array(
+			     'cat_id'=>$cat_id,
+		         'name'=>$name,
+		          'bajin'=>$section);
+		$this->db->where('id',$sub_id);
+		$this->db->update('subcategories',$data);
 	}
 }

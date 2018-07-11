@@ -1,23 +1,26 @@
 $(document).ready(function(){
 	$('#add_cat').click(function(){
+
 		let n=$('#cat_name').val();
 		let s=$('#cat_section').val();
 		$.ajax({
-			url:base_url+"index.php/Admin/Add_categorie",
+			url:base_url+"admin/Admin/Add_categorie",
 			type:'post',
 			data:{
 				name:n,
 				section:s
 			},
 			success:function(elem){
+				// alert("sdgs");
 				location.reload();
 			}
 		})
+		
 	});
 	$('.delete').click(function(){
 		let id=$(this).parents('tr').find('.id').html();
 		$.ajax({
-			url:base_url+"index.php/Admin/Delete_categorie",
+			url:base_url+"admin/Admin/Delete_categorie",
 			type:'post',
 			data:{
 				id:id
@@ -32,7 +35,7 @@ $(document).ready(function(){
 		let n=$(this).parents('tr').find('.name').html();
 		let s=$(this).parents('tr').find('.section').html();
 		$.ajax({
-			url:base_url+"index.php/Admin/Update_categorie",
+			url:base_url+"admin/Admin/Update_categorie",
 			type:'post',
 			data:{
 				id:id,
@@ -43,13 +46,13 @@ $(document).ready(function(){
 				location.reload();
 			}
 		})
-	})
+	});
 	$('#add').click(function(){
 		let name=$('#name').val();
 		let part=$('#part').val();
 		let cat_id=$('#cat_id').val();
 		$.ajax({
-			url:base_url+"Admin/Add_subcat",
+			url:base_url+"admin/Admin/Add_subcat",
 			type:'post',
 			data:{
 				name:name,
@@ -61,4 +64,38 @@ $(document).ready(function(){
 			}
 		})
 	})
+	$('.sub_delete').click(function(){
+		let sub_id=$(this).parents('tr').find('.sub_id').html();
+		// alert(sub_id);
+		$.ajax({
+			url:base_url+"admin/Admin/Delete_subcategorie",
+			type:'post',
+			data:{
+				id:sub_id
+			},
+			success:function(elem){
+				location.reload();
+			}
+		})
+	});
+	$('.sub_update').click(function(){
+		let sub_id=$(this).parents('tr').find('.sub_id').html();
+		let cat_id=$(this).parents('tr').find('.cat_id').html();
+		let n=$(this).parents('tr').find('.sub_name').html();
+		let s=$(this).parents('tr').find('.sub_section').html();
+		// alert('da');
+		$.ajax({
+			url:base_url+"admin/Admin/Update_subcategorie",
+			type:'post',
+			data:{
+				id:sub_id,
+				cat_id:cat_id,
+				name:n,
+				section:s
+			},
+			success:function(elem){
+				location.reload();
+			}
+		})
+	});
 })
