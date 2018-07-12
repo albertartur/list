@@ -56,3 +56,5 @@ $route['register'] = 'home/register';
 $route['lostpwd'] = 'home/lostpwd';
 $route['verification'] = 'home/verification';
 $route['translate_uri_dashes'] = FALSE;
+$route['admin/home'] = 'admin/admin/home';
+$route['admin/login'] = 'admin/admin/index';
