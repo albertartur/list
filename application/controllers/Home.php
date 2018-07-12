@@ -44,16 +44,22 @@ class Home extends CI_Controller {
 		$this->load->view('messages');
 		$this->load->view('footer');
 	}
-		public function wallet()
+	public function wallet()
 	{
 		$this->load->view('header');
 		$this->load->view('wallet');
 		$this->load->view('footer');
 	}
-		public function profile()
+	public function profile()
 	{
 		$this->load->view('header');
 		$this->load->view('profile');
+		$this->load->view('footer');
+	}
+	public function logout()
+	{
+		$this->load->view('header');
+		$this->load->view('logout');
 		$this->load->view('footer');
 	}
 }
