@@ -6,14 +6,18 @@ class Admin extends CI_Controller
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('admin/admin_model');
+    if ( ! $this->migration->current())
+{
+  show_error($this->migration->error_string());
+}
 	}
    public function index(){
    	$this->load->view('admin/login');
    }
 
    public function check_admin(){
-   	$log=$this->input->post('login');
-   	$pass=$this->input->post('password');///create an object of admin_model name is admin_model
+   	 $log=$this->input->post('login');
+   	 $pass=$this->input->post('password');///create an object of admin_model name is admin_model
      if($this->admin_model->check_admin($pass,$log)){
     	redirect (base_url('admin/home'));///its go to home method of admin class
      }

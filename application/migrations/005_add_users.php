@@ -5,6 +5,7 @@ class Migration_add_users extends CI_Migration {
 
 	public function up()
 	{
+	if(!$this->db->table_exists('users')){
 		$this->dbforge->add_field(array(
 			'id' => array(
 				'type' => 'INT',
@@ -33,10 +34,8 @@ class Migration_add_users extends CI_Migration {
 			      'constraint' => '150'
 
 			 ),
-			'data_of_signup'=>array(
-				'type'=>'TIMESTAMP'
+			'data_of_signup TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
 
-			),
 			'wallet_number'=>array(
 			        'type'=>'INT',
 			         'constraint'=>'6',
@@ -53,10 +52,9 @@ class Migration_add_users extends CI_Migration {
 			)
 		));
 		$this->dbforge->add_key('id', TRUE);
-		// $this->dbforge->add_key('wallet_number', TRUE);
 		$this->dbforge->create_table('users');
 	}
-
+}
 	public function down()
 	{
 		$this->dbforge->drop_table('users');

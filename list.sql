@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Июл 11 2018 г., 10:51
+-- Время создания: Июл 12 2018 г., 11:00
 -- Версия сервера: 10.1.28-MariaDB
 -- Версия PHP: 5.6.32
 
@@ -97,7 +97,7 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`version`) VALUES
-(12);
+(7);
 
 -- --------------------------------------------------------
 
@@ -112,7 +112,7 @@ CREATE TABLE `products` (
   `description` char(1) NOT NULL,
   `location` varchar(50) NOT NULL,
   `data_of_put` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `data_of_update` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `data_of_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `info_array` varchar(200) NOT NULL,
   `us_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

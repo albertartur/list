@@ -4,7 +4,7 @@ class Admin_model extends CI_Model{
 	public function check_admin($pass,$log){
 		$query=$this->db->get_where('admin',array('password'=>$pass,'login'=>$log))->num_rows();
 		return $query;
-	}
+ }
 	public function get_categories(){
 		$query=$this->db->get('categories')->result_array();
 		return $query;
