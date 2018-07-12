@@ -63,7 +63,7 @@ $route['logout'] = 'home/logout';
 $route['category/ads'] = 'category/ads';
 
 
-
+$route['user'] = 'UsersController';
 $route['translate_uri_dashes'] = FALSE;
 $route['admin/home'] = 'admin/admin/home';
 $route['admin/login'] = 'admin/admin/index';
