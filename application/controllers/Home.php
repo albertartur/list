@@ -26,10 +26,40 @@ class Home extends CI_Controller {
 		$this->load->view('lostpwd');
 		$this->load->view('footer');
 	}
-		public function verification()
+	public function verification()
 	{
 		$this->load->view('header');
 		$this->load->view('verification');
+		$this->load->view('footer');
+	}
+	public function my()
+	{
+		$this->load->view('header');
+		$this->load->view('my');
+		$this->load->view('footer');
+	}
+	public function messages()
+	{
+		$this->load->view('header');
+		$this->load->view('messages');
+		$this->load->view('footer');
+	}
+	public function wallet()
+	{
+		$this->load->view('header');
+		$this->load->view('wallet');
+		$this->load->view('footer');
+	}
+	public function profile()
+	{
+		$this->load->view('header');
+		$this->load->view('profile');
+		$this->load->view('footer');
+	}
+	public function logout()
+	{
+		$this->load->view('header');
+		$this->load->view('logout');
 		$this->load->view('footer');
 	}
 }

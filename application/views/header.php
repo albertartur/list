@@ -12,6 +12,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="<?= base_url('css/style.css'); ?>">
   <script type="text/javascript" src="<?= base_url('js/user.js'); ?>"></script>
+  <script>
+    base_url = "<?= base_url(); ?>"
+  </script>
   <title></title>
 </head>
 <body>
@@ -20,9 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="container">
     <div class="navbar-header">
       <button type="button"  class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="top_manu" " class="icon-bar"></span>
-        <span class="top_manu" class="icon-bar"></span>
-        <span class="top_manu" class="icon-bar"></span>                        
+        <span  class="icon-bar"></span>
+        <span  class="icon-bar"></span>
+        <span  class="icon-bar"></span>                        
       </button>
       <a class="navbar-brand" href="<?= base_url(''); ?>"><img height="25px" src="<?= base_url('img/p.png'); ?>"></a>
     </div>

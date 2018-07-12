@@ -74,11 +74,12 @@
 		</div>
 		<div style="min-height: 3vh;"></div>
 	</div>
-	<div class="col-md-9" id="main_content"></div>
 		<div class="text-center" id="main_reclame">
 			<img src="<?= base_url('img/reklam_main.gif'); ?>">
 		</div>
+	<div class="col-md-9" id="main_content">
 		<div class="top_products">
 			Տոպ հայտարարություններ
 		</div>
 	</div>
+</div>
