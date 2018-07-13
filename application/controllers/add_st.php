@@ -8,5 +8,12 @@ class Add_st extends CI_Controller {
 		$this->load->view('add_st/index');
 		$this->load->view('footer');
 	}
+	public function add($x)
+	{
+		$x=1;
+		$this->load->view('header');
+		$this->load->view("add_st/add");
+		$this->load->view('footer');
+	}
 
 }

@@ -35,6 +35,7 @@
     background-color: #7f7f7f;
     margin: 0 auto 4px;
 }
+
 #sec{
     border: none;
 }
@@ -49,6 +50,55 @@
     position: relative;
     left: 0px;
     display:block;
+}
+.borderdot{
+    margin: 20px;
+    border-bottom-width:1px; 
+    border-bottom-style: dotted; 
+}
+.rad{
+    padding-right: 10px;
+}
+label{
+    font-weight: normal;
+}
+.inp{
+    padding: 5px;
+    margin-top: 8px;
+    border-radius: 5px;
+    height: 2.2em;
+    outline: none;
+    border: 1px solid #ccc;
+}
+.inp-sm{
+    width: 20%;
+}
+.inp-xs{
+    width: 10%;
+}
+.inp-xl{
+    width: 100%;
+}
+.inp-m{
+    width: 25%;
+}
+.inp-xxl{
+    width: 100%;
+    height: 250px;
+    vertical-align: text-top;
+}
+.inp-ml{
+    width: 100%;
+    height: 150px;
+}
+.inp-file{
+    padding: 5px;
+}
+.bord{
+    margin: 15px;
+    padding: 10px;
+    border:1px solid grey;
+    border-radius: 5px;
 }
 /* #mm{
     padding-bottom: 500px;
@@ -185,6 +235,21 @@ textarea{
 	outline: none;
 	border: 1px solid #ccc;
 	text-indent: 5px;
+	padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+input:focus,select:focus{
+	border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
 }
 .btn-success{
 	margin-top: 20px;
@@ -305,8 +370,8 @@ ul li ul li:hover {
 .top_products_grid{
 	border: 1px solid red;
 	display: inline-block;
-	width: 33%;
-	height: 150px;
+	width: 30%;
+	height: 201px;
 	transition: .6s ease-in;
 }
 .top_products_grid>a{
@@ -318,7 +383,7 @@ ul li ul li:hover {
 .top_products_list{
 	border: 1px solid red;
 	width: 100%;
-	height: 150px;
+	height: 201px;
 	transition: .6s ease-in;
 }
 .ord_products{
@@ -330,14 +395,18 @@ ul li ul li:hover {
 	border: 1px solid red;
 	display: inline-block;
 	width: 33%;
-	height: 150px;
+	height: 201px;
 	transition: .6s ease-in;
 }
 .ord_products_list{
 	border: 1px solid red;
 	width: 100%;
-	height: 150px;
+	height: 201px;
 	transition: .6s ease-in;
+}
+.work_list{
+	padding: 20px;
+	border-bottom: 1px solid #ccc;
 }
 .ord_products_grid:hover{
 	background: rgba(0,0,0,0.1);

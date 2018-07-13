@@ -24,7 +24,7 @@
 				<label for="k">Կփոխանակեմ</label>
 			</div>
 			<div>
-				<input id="p" type="checkbox" name="">
+				<input  id="p" type="checkbox" name="">
 				<label for="p">Փնտրում եմ</label>
 			</div>
 			<div class="border"></div>
@@ -34,7 +34,7 @@
 			</div>
 			<div class="border"></div>
 			<h4>Գին</h4>
-			<input class="input-sm" type="text">-<input class="input-sm" type="" name=""> <a class="" href=""></a>
+			<input class="input-sm " type="text">-<input class="input-sm " type="" name=""> <a class="" href=""></a>
 			<div class="border"></div>
 			<label for="val">Տարադրամ</label>
 			<select class="input-sm" name="" id="val">
@@ -47,9 +47,27 @@
 	<div class="col-md-9" id="main_content">
 		<div class="top_products">
 			<h2>Տոպ հայտարարություններ</h2>
-			<div class="top_products_grid"></div>
-			<div class="top_products_grid"></div>
-			<div class="top_products_grid"></div>
+			<div class="top_products_grid">
+				<div class="img_list">
+					<img     width = "100%" height = "162px" src="<?= base_url('img/111.JPG'); ?>">
+				</div>
+				<div class="name_list">Օրիգինալ, Բրենդային կոշիկներ ԱՄՆ-ից + 10% Զեղչ մինչև հուլիսի 18-ը</div>
+			<span>pric</span>
+			</div>
+			<div class="top_products_grid">
+				<div  class="img_list">
+					<img     width = "100%" height = "162px" src="<?= base_url('img/111.JPG'); ?>">
+				</div>
+				<div class="name_list">Օրիգինալ, Բրենդային կոշիկներ ԱՄՆ-ից + 10% Զեղչ մինչև հուլիսի 18-ը</div>
+			<div>pric</div>
+			</div>
+			<div class="top_products_grid">
+				<div  class="img_list">
+					<img     width = "100%" height = "162px" src="<?= base_url('img/111.JPG'); ?>">
+				</div>
+				<div class="name_list">Օրիգինալ, Բրենդային կոշիկներ ԱՄՆ-ից + 10% Զեղչ մինչև հուլիսի 18-ը</div>
+			<div>pric</div>
+			</div>
 			<div class="top_products_grid"></div>
 			<div class="top_products_grid"></div>
 			<div class="top_products_grid"></div>
