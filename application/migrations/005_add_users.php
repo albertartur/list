@@ -18,13 +18,15 @@ class Migration_add_users extends CI_Migration {
 				'constraint' => '40',
 			),
 			'password' => array(
-				'type' => 'INT',
+				'type' => 'VARCHAR',
+				'constraint'=>'20',
 				'unsigned' => TRUE
 				
 			),
 			
 			'mail'=> array(
-			      'type'=> 'CHAR',
+			      'type'=> 'VARCHAR',
+			      'constraint'=>'40',
 			      'unsigned' => TRUE,
 
 			   ),
@@ -44,7 +46,7 @@ class Migration_add_users extends CI_Migration {
 			),
 			'contact_information'=>array(
 			         'type' => 'VARCHAR',
-				    'constraint' => '250'
+				    'constraint' => '300'
 				),
 			'location_user'=>array(
 				'type'=>'VARCHAR',

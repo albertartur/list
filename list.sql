@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Июл 12 2018 г., 11:00
+-- Время создания: Июл 13 2018 г., 10:02
 -- Версия сервера: 10.1.28-MariaDB
 -- Версия PHP: 5.6.32
 
@@ -287,14 +287,23 @@ INSERT INTO `subcategories` (`id`, `name`, `cat_id`, `bajin`) VALUES
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_name` varchar(40) NOT NULL,
-  `password` int(10) UNSIGNED NOT NULL,
-  `mail` char(1) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `mail` varchar(40) NOT NULL,
   `image` varchar(150) NOT NULL,
   `data_of_signup` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `wallet_number` int(6) NOT NULL,
-  `contact_information` varchar(250) NOT NULL,
+  `contact_information` varchar(300) NOT NULL,
   `location_user` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `users`
+--
+
+INSERT INTO `users` (`id`, `user_name`, `password`, `mail`, `image`, `data_of_signup`, `wallet_number`, `contact_information`, `location_user`) VALUES
+(2, 'Alis', '123', 'alisamargaryan12@gmail.com', 'avatar3.png', '2018-07-13 06:01:24', 100002, 'a:4:{s:6:\"number\";s:9:\"055112269\";s:5:\"skype\";s:0:\"\";s:5:\"viber\";s:9:\"055112269\";s:8:\"WhatsApp\";s:0:\"\";}', 'Պռոշյան'),
+(3, 'Ani', 'ani123a', 'ani@mail.ru', 'avatar.png', '2018-07-13 07:50:27', 100003, 'a:4:{s:6:\"number\";s:9:\"055112269\";s:5:\"skype\";s:0:\"\";s:5:\"viber\";s:9:\"055112269\";s:8:\"WhatsApp\";s:0:\"\";}', 'Արաբկիր'),
+(4, 'Aram', '147', 'aram@mail.ru', 'free1.png', '2018-07-13 07:54:47', 100004, 'a:4:{s:6:\"number\";s:9:\"010256970\";s:5:\"skype\";s:0:\"\";s:5:\"viber\";s:9:\"010659710\";s:8:\"WhatsApp\";s:0:\"\";}', 'Ավան');
 
 --
 -- Индексы сохранённых таблиц
@@ -374,7 +383,7 @@ ALTER TABLE `subcategories`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
