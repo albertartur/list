@@ -8,10 +8,16 @@ class Category extends CI_Controller {
 		$this->load->view('category/index');
 		$this->load->view('footer');
 	}
-		public function ads()
+	public function ads()
 	{
 		$this->load->view('header');
 		$this->load->view('category/ads');
+		$this->load->view('footer');
+	}
+	public function work()
+	{
+		$this->load->view('header');
+		$this->load->view('category/work');
 		$this->load->view('footer');
 	}
 }
