@@ -42,6 +42,26 @@ $('#edit_password').on('click',function(){
     });
  });
 
+//edit email
+$('#edit_email').on('click',function(){
+    var password =$('#password').val();
+    var new_email =$('#new_email').val();
+    $.ajax({
+         type: 'post',
+         url:  base_url+'/UsersController/edit_email',
+         data: {
+               pass:password,
+               email:new_email
+         },
+         success: function(data)
+         {
+           alert(data);
+          
+         }
+    });
+
+})
+
 
  
  // delete my profil
@@ -55,7 +75,7 @@ $('#delete_my_profil').on('click',function(){
          data: {password_delete:password_delete},
          success: function(data)
          {
-          //alert(data);
+          alert(data);
           
          }
     });

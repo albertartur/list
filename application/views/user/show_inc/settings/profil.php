@@ -2,16 +2,17 @@
 
 <form method="post" action="<?= base_url('UsersController/edit_profil'); ?>?profil=Պրոֆիլ" enctype="multipart/form-data">
 	
-	<input type="text" name="user_name" placeholder="User name">
+	<input type="text" name="user_name" placeholder="User name" value="<?= $profil[0]['user_name']; ?>">
 	<input type="file" name="img">
+	<img src="<?= base_url('uploads/').$profil[0]['image'];?>">
 
-     <select  name="location">
+     <select  name="location" id="on">
 
-<option value="Խնդրում ենք ընտրել" selected="selected">Խնդրում ենք ընտրել</option>
+<option value="Խնդրում ենք ընտրել" >Խնդրում ենք ընտրել</option>
 
 <optgroup label="Երևան">
-<option value="Աջափնյակ">Աջափնյակ</option>
-<option value="Արաբկիր">Արաբկիր</option>
+<option value="Աջափնյակ"  >Աջափնյակ</option>
+<option value="Արաբկիր" >Արաբկիր</option>
 <option value="Ավան">Ավան</option>
 <option value="Դավիթաշեն">Դավիթաշեն</option>
 <option value="Էրեբունի">Էրեբունի</option>
@@ -80,7 +81,6 @@
 <option value="Նոր Հաճըն">Նոր Հաճըն</option>
 <option value="Նուռնուս">Նուռնուս</option>
 <option value="Պտղնի">Պտղնի</option>
-<option value="Պռոշյան">Պռոշյան</option>
 <option value="Ծաղկաձոր">Ծաղկաձոր</option>
 <option value="Եղվարդ">Եղվարդ</option>
 <option value="Զովունի">Զովունի</option>
@@ -122,3 +122,13 @@
 </form>
 
 </div>
+<script type="text/javascript">
+	 var location_user="<?= $profil[0]['location_user'];; ?>"
+</script>
+
+<script type="text/javascript">
+	$("select option").each(function(){
+  if ($(this).text() == location_user)
+    $(this).attr("selected","selected");
+});
+</script>
