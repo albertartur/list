@@ -9,6 +9,10 @@ $('#contact_info').on('click',function(){
     var viber      = $('#viber').val();
     var WhatsApp   = $('#WhatsApp').val();
     
+    $(get_number).text(number);
+    $(get_skype).text(skype);
+    $(get_viber).text(viber);
+    $(get_WhatsApp).text(WhatsApp);
   
 	  $.ajax({
 	  	   type: 'post',
@@ -16,7 +20,7 @@ $('#contact_info').on('click',function(){
 	  	   data: {number:number, skype:skype, viber:viber, WhatsApp:WhatsApp},
 	  	   success: function(data)
 	  	   {
-	  	   	 alert(data);
+	  	   	// alert(data);
 	  	   	
 	  	   }
 	  });
@@ -42,12 +46,33 @@ $('#edit_password').on('click',function(){
     });
  });
 
+//edit email
+$('#edit_email').on('click',function(){
+    var password =$('#password').val();
+    var new_email =$('#new_email').val();
+    $.ajax({
+         type: 'post',
+         url:  base_url+'/UsersController/edit_email',
+         data: {
+               pass:password,
+               email:new_email
+         },
+         success: function(data)
+         {
+           alert(data);
+          
+         }
+    });
+
+})
+
 
  
  // delete my profil
 $('#delete_my_profil').on('click',function(){
    
     var password_delete  = $('#password_delete').val();
+
     
         $.ajax({
          type: 'post',
@@ -55,7 +80,7 @@ $('#delete_my_profil').on('click',function(){
          data: {password_delete:password_delete},
          success: function(data)
          {
-          //alert(data);
+          alert(data);
           
          }
     });

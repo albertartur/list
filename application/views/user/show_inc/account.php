@@ -14,7 +14,10 @@
 </div><br><br>
 
 <div>
+
+<form method="post">	
 <h2>Հեռացնել հաշիվը</h2>
-<input type="password" id="password_delete" placeholder="Ձեր գաղտնաբառը">
-<input type="button" id="delete_my_profil" value="Հեռացնել">
-</div><br><br>
+<input type="password" id="password_delete" name="password_delete" placeholder="Ձեր գաղտնաբառը">
+<input type="submit" id="delete_my_profil" value="Հեռացնել">
+</div>
+</form>

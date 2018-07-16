@@ -29,31 +29,42 @@ class UsersModel extends CI_Model
 
 
 	// edit_profil_model
-    public function edit_profil_model($user_name,$location_user,$file_name,$user_id){
-    	
-      
+    public function edit_profil_model($user_name,$location_user,$file_name,$user_id,$wallet_number){
+    	   
 
-         $data = array(
-        'image' => $file_name,
-        'user_name' => $user_name,
-        'location_user' => $location_user    
+     $data = array(
+            'image' => $file_name,
+            'user_name' => $user_name,
+            'location_user' => $location_user,
+            'wallet_number'=> $wallet_number   
                       );
 
          $this->db->where('id', $user_id);
          $this->db->update('users', $data);
+
+       
     
     } 
+
+    // select profil data
+    public function select_profil_model($user_id)
+    {
+        $query = $this->db->query("select user_name,image,location_user from users where id='$user_id'");
+   	    return  $query->result_array();
+    }
+
 
     // edit contact_information
     public function edit_contact_inf_model($serialize,$user_id)
     {
+    	$this->select_profil_model($user_id);
          $data = array('contact_information' => $serialize);
 
          $this->db->where('id', $user_id);
          $this->db->update('users', $data);
     }
 
-   //contact_information_model
+   //select contact_information_model  data
    public function contact_information_model($user_id)
    {
 
@@ -84,7 +95,8 @@ class UsersModel extends CI_Model
    	    {
    	    	echo 'Dzer popoxutyun@ katarvace';
    	    }
-   	    else{echo 'Xndrum enq chisht mutqagreq dzer  gaxtanabr@';}	  
+   	    else{
+          echo 'Xndrum enq chisht mutqagreq dzer  gaxtanabr@';}	  
    }
 
 
@@ -95,16 +107,12 @@ class UsersModel extends CI_Model
    
   
      if ($this->db->affected_rows() > 0) {
-           redirect(base_url('UsersController/logout'));
+          // redirect(base_url('UsersController/logout'));
+      echo 'your profil is deleteed';
         }
-        echo 'Xndrum enq chisht mutqagreq dzer  gaxtanabr@';
 
-        // if($this->db->affected_rows())
-   	    // {
-   	    // 	 redirect(base_url('UsersController/logout'));
-   	    // }
-   	    // else{echo 'Xndrum enq chisht mutqagreq dzer  gaxtanabr@';}	  
-
+        else{echo 'Xndrum enq chisht mutqagreq dzer  gaxtanabr@';}
+       
    	} 	  
 
 }

@@ -7,13 +7,16 @@ class UsersController extends CI_Controller
    	   parent::__construct();
        $this->load->model('UsersModel');
        $this->load->library('session');
-
+       $this->load->helper('cookie');
+       $this->load->view('header');
    }
 
 public function index()
 	{  
 		if($this->session->userdata('my_session') != true){
-		$this->load->view('user/login');	                                                         }
+           // if(isset($_COOKIE['email']) && isset($_COOKIE['password'])){
+		$this->load->view('user/login');	
+        }                                                      //  }
 	    else{
 	    	return    redirect(base_url('UsersController/show'));
 	    }                                                     
@@ -21,13 +24,24 @@ public function index()
 	                                          
 	}
 
+	
+
 	public function check(){
 		$email    = $this->input->post('email');
 		$password = $this->input->post('password');
+        $remember = $this->input->post('remember');
+        
 
 		if($this->UsersModel->check_model($email,$password)){
 			$session_data =  array('my_session'=>$email);
 	 	    $this->session->set_userdata($session_data);
+
+             if($remember !=NULL)
+         {
+           setcookie("email", $email, time() + 3600);
+           setcookie("password", $password, time() + 3600);
+         }
+
 			redirect(base_url('UsersController/show?my_profil=Հայտարարություններ'));
 		}
 		else{
@@ -51,6 +65,9 @@ public function index()
 	}
 
 
+
+
+
 	public function show()
 	{
 		 // $a = $this->session->userdata('my_session');
@@ -72,7 +89,7 @@ public function index()
 
 	public function reset_password()
 	{
-	     $email = $this->input->post('email');
+	     $email         = $this->input->post('email');
 	     $security_code = $this->security_code();	
 
         $query = $this->db->query("select * from users  where mail='$email'");
@@ -97,7 +114,7 @@ public function index()
          $email = $this->input->post('email');
          $password = $this->input->post('password');
          $repeat_password = $this->input->post('repeat_password');
-        // echo $code;
+
          $query = $this->db->query("select * from users  where mail='$email'");
          $row = $query->row_array();
          $check_email = $row['mail'];
@@ -114,47 +131,60 @@ public function index()
 	}
 
 
+
+
 	public function edit_profil(){
-		      
+		         
+               
 		        //  upload image
-		 $config['upload_path'] = './uploads/';
-         $config['allowed_types']  = 'gif|jpg|png|pdf|doc';
+		        $config['upload_path']   = './uploads/';
+                $config['allowed_types'] = 'gif|jpg|png|pdf|doc';
                 
 
                 $this->load->library('upload', $config);
 
-                // if (!$this->upload->do_upload('img'))
-                if (empty($_FILES['img']['name']))
+                if ( ! $this->upload->do_upload('img'))
                 {
                         
                     $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 
                     $error = array('error' => $this->upload->display_errors());
 
-                    $this->load->view('user/show', $error);
-                    // var_dump($_FILES['img']['name']); 
+                    //$this->load->view('show', $error);
                 }
                  else
                  {
-                $data = array('upload_data' => $this->upload->data());
+                    // $data = array('upload_data' => $this->upload->data());
+                    
+                    // $this->load->view('show', $data);
+                   
+                    
                  $user_id = $this->user_id();
-                 $file_name = $_FILES['img']['name']; 
+                 $file_name = $this->upload->data('file_name'); 
                  $user_name = $this->input->post('user_name');
                  $location_user  = $this->input->post('location');
-
-
-                 $this->UsersModel->edit_profil_model($user_name,$location_user,$file_name,$user_id);
-                    $this->load->view('user/show', $data);
+                 $wallet_number=$user_id+100000;
+                 $this->UsersModel->edit_profil_model($user_name,$location_user,$file_name,$user_id,$wallet_number);
                     
                 }
+
+                  
+                 
+
+
+                $user_id = $this->user_id();
+                $data['profil'] = $this->UsersModel->select_profil_model($user_id);
+                $this->load->view('user/show',$data);
                 
                  
 	
 	}
 
 
+
+     //  edit_contact_inf
 	public function edit_contact_inf()
-	{
+	{     
 		 $number = $this->input->post('number');
 		 $skype = $this->input->post('skype');
 		 $viber = $this->input->post('viber');
@@ -169,9 +199,9 @@ public function index()
 
 		    );
         $serialize =  serialize($data);
-        // $unserialize = unserialize($serialize);
+        $unserialize = unserialize($serialize);
       
-		 
+		
 		$this->UsersModel->edit_contact_inf_model($serialize,$user_id);
 
 	}
@@ -209,12 +239,12 @@ public function index()
     // edith email
     public function edit_email()
     {   
-    	$user_id = $this->user_id();
-    	$password  = $this->input->post('password');
-    	$new_email = $this->input->post('new_email');
+    	 $user_id = $this->user_id();
+    	 $password  = $this->input->post('pass');
+    	 $new_email = $this->input->post('email');
 
     	if(!empty($password) && !empty($new_email))
-    	{
+        {  
     		$this->UsersModel->edit_email_model($new_email,$password,$user_id);
     	}
     }
