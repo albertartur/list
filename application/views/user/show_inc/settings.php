@@ -37,5 +37,6 @@
  <?php
  if(!empty($_GET['account']) and $_GET['account']=='Հաշիվ')
        { $this->load->view('user/show_inc/settings/account'); }
+
  ?>
 

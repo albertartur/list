@@ -7,29 +7,37 @@ class UsersController extends CI_Controller
    	   parent::__construct();
        $this->load->model('UsersModel');
        $this->load->library('session');
-
+       $this->load->helper('cookie');
+       $this->load->view('header');
    }
 
 public function index()
 	{  
-		if($this->session->userdata('my_session') != true){
-		$this->load->view('user/login');	                                                         }
-	    else{
-	    	return    redirect(base_url('UsersController/show'));
-	    }                                                     
-		                                             
+		if($this->session->userdata('my_session') != true)
+        {
+          $this->load->view('user/login');	
+        } 
+
+	    else
+        {
+	      return    redirect(base_url('UsersController/show'));
+	    }                                                     		                                             
 	                                          
 	}
 
 	
 
-	public function check(){
+	public function check()
+    {
 		$email    = $this->input->post('email');
 		$password = $this->input->post('password');
+        $remember = $this->input->post('remember');
+        
 
 		if($this->UsersModel->check_model($email,$password)){
 			$session_data =  array('my_session'=>$email);
 	 	    $this->session->set_userdata($session_data);
+
 			redirect(base_url('UsersController/show?my_profil=Հայտարարություններ'));
 		}
 		else{
@@ -47,7 +55,8 @@ public function index()
 	}
 
 
-	public function logout(){
+	public function logout()
+    {
 		$this->session->unset_userdata('my_session');
 		redirect(base_url('UsersController/index'));
 	}
@@ -58,7 +67,6 @@ public function index()
 
 	public function show()
 	{
-		 // $a = $this->session->userdata('my_session');
 		 $this->load->view('user/show');
 		 $this->user_id();
 	}
@@ -77,8 +85,8 @@ public function index()
 
 	public function reset_password()
 	{
-	     $email         = $this->input->post('email');
-	     $security_code = $this->security_code();	
+	    $email         = $this->input->post('email');
+	    $security_code = $this->security_code();	
 
         $query = $this->db->query("select * from users  where mail='$email'");
         $row = $query->row_array();
@@ -89,8 +97,9 @@ public function index()
         	$this->load->view('user/login');	
         }
 
-        else{
-             $this->load->view('user/reset_password');	
+        else
+        {
+            $this->load->view('user/reset_password');	
         }
 
 	}
@@ -112,7 +121,9 @@ public function index()
               $this->UsersModel->register_model($email,$password);
               $this->check();
          }
-         else{
+
+         else
+         {
              $this->load->view('user/register');
          }
 		
@@ -121,34 +132,29 @@ public function index()
 
 
 
-	public function edit_profil(){
+	public function edit_profil()
+    {
 		         
-                $user_id = $this->user_id();
-    	        $data['profil'] = $this->UsersModel->select_profil_model($user_id);
-                $this->load->view('user/show',$data);
-		        //  upload image
-		        $config['upload_path']   = './uploads/';
-                $config['allowed_types'] = 'gif|jpg|png|pdf|doc';
+       //  upload image
+	   $config['upload_path']   = './uploads/';
+       $config['allowed_types'] = 'gif|jpg|png|pdf|doc';
                 
+       $this->load->library('upload', $config);
 
-                $this->load->library('upload', $config);
-
-                if ( ! $this->upload->do_upload('img'))
-                {
-                        
+        if ( ! $this->upload->do_upload('img'))
+                {            
                     $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
 
                     $error = array('error' => $this->upload->display_errors());
 
                     //$this->load->view('show', $error);
                 }
+
                  else
                  {
                     // $data = array('upload_data' => $this->upload->data());
-                    
                     // $this->load->view('show', $data);
-                   
-                    
+                     
                  $user_id = $this->user_id();
                  $file_name = $this->upload->data('file_name'); 
                  $user_name = $this->input->post('user_name');
@@ -157,9 +163,10 @@ public function index()
                  $this->UsersModel->edit_profil_model($user_name,$location_user,$file_name,$user_id,$wallet_number);
                     
                 }
-                
-                 
-	
+
+                $user_id = $this->user_id();
+                $data['profil'] = $this->UsersModel->select_profil_model($user_id);
+                $this->load->view('user/show',$data);
 	}
 
 
@@ -167,23 +174,22 @@ public function index()
      //  edit_contact_inf
 	public function edit_contact_inf()
 	{     
-		 $number = $this->input->post('number');
-		 $skype = $this->input->post('skype');
-		 $viber = $this->input->post('viber');
+		 $number   = $this->input->post('number');
+		 $skype    = $this->input->post('skype');
+		 $viber    = $this->input->post('viber');
 		 $WhatsApp = $this->input->post('WhatsApp');
-		 $user_id = $this->user_id();
+		 $user_id  = $this->user_id();
 
 		 $data = array(
-          'number'=>$number,
-          'skype' =>$skype,
-          'viber' =>$viber,
-          'WhatsApp'=>$WhatsApp
+          'number'   =>$number,
+          'skype'    =>$skype,
+          'viber'    =>$viber,
+          'WhatsApp' =>$WhatsApp
 
 		    );
+
         $serialize =  serialize($data);
-        $unserialize = unserialize($serialize);
       
-		
 		$this->UsersModel->edit_contact_inf_model($serialize,$user_id);
 
 	}
@@ -211,9 +217,10 @@ public function index()
         {
         	$this->UsersModel->edit_password_model($old_password,$new_password,$user_id);
         }
+
         else
         {
-        	echo "verji 2 dashter@ chisht mutqagreq";
+        	echo "Վերջին երկու դաշտերի արժեքները չեն համապատասխանում իրար";
         }
     }
 
@@ -237,6 +244,7 @@ public function index()
     {
     	$user_id  = $this->user_id();
         $password = $this->input->post('password_delete');
+
     	if(!empty($password))
     	{
     		$this->UsersModel->delete_my_profil_model($password,$user_id);

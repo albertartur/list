@@ -1,14 +1,22 @@
-	<div id="Պրոֆիլ">
-
-<form method="post" action="<?= base_url('UsersController/edit_profil'); ?>?profil=Պրոֆիլ" enctype="multipart/form-data">
 	
-	<input type="text" name="user_name" placeholder="User name" value="<?= $profil[0]['user_name']; ?>">
-	<input type="file" name="img">
-	<img src="<?= base_url('uploads/').$profil[0]['image'];?>">
 
-     <select  name="location" id="on">
+ 		
+	
 
-<option value="Խնդրում ենք ընտրել" >Խնդրում ենք ընտրել</option>
+			<div class="col-md-9 border-l">
+<form method="post" action="<?= base_url('UsersController/edit_profil'); ?>?profil=Պրոֆիլ" enctype="multipart/form-data">
+				<div class="row">	
+					<label class="col-md-5" for="us-mail"> Ձեր Էլ. փոստի հասցեն</label>
+					<input  class="col-md-2 input-sm" type="text" placeholder="mail" id="us-mail" value="<?= $this->session->userdata('my_session'); ?>">
+				</div>
+				<div class="row">
+					<label  class="col-md-5" for="us-name">Ձեր անունը</label>
+					<input  class="col-md-2 input-sm" value="<?= $profil[0]['user_name']; ?>" type="text" id="us-name" name="user_name">
+				</div>
+				<div  class="row">	
+					<label  class="col-md-5" for="city"> Տարածաշրջան</label>
+					<select  class="col-md-2 input-sm"  name="location" id="on">
+						<option value="Խնդրում ենք ընտրել" >Խնդրում ենք ընտրել</option>
 
 <optgroup label="Երևան">
 <option value="Աջափնյակ"  >Աջափնյակ</option>
@@ -115,18 +123,39 @@
 <option value="Վայք">Վայք</option>
 <option value="Եղեգնաձոր">Եղեգնաձոր</option>
 </optgroup><option value="Հայաստանից դուրս">Հայաստանից դուրս</option>
-
-</select>
-
-	<input type="submit" value="Պահպանել">
-</form>
-
+					</select>
+				</div>
+				<div class="border"></div><span>Ձեր ավատարը</span>	
+				<div style="margin-left: 50%;">
+					
+					<div class="row">
+						<input  type="radio" id="us-avatar1" name="img">
+						<label  for="us-avatar1"> <img width="32px"  src="<?= base_url('uploads/').$profil[0]['image'];?>"></label>
+						<label for="load-photo">Վերբեռնել</label>
+						<input style="display: none;" id="load-photo" name="img" type="file">
+					</div>
+				</div>	
+				<div class="border"></div>
+				<div class="row text-center">
+					<button class="btn-a">Պահպանել</button>
+				</div>
+     </form>
+			</div>
+		</div>		
+	</div>
 </div>
+
+
+
+
+
+
 <script type="text/javascript">
-	 var location_user="<?= $profil[0]['location_user'];; ?>"
+	 var location_user="<?= $profil[0]['location_user']; ?>"
 </script>
 
 <script type="text/javascript">
+	
 	$("select option").each(function(){
   if ($(this).text() == location_user)
     $(this).attr("selected","selected");

@@ -12,9 +12,35 @@
 	<div class="col-md-9" id="main_content_ads">
 		<h2>Name ads</h2>
 		<span>price 360,000 ֏ </span> <span class="glyphicon glyphicon-globe">Երևան › Աջափնյակ</span>
-		<div id="img_ads"></div>
-		<span>Վիճակ</span>
-		<h4>Նոր</h4>
+
+    <div id="zoom_cont">
+    		<div id="img_ads">
+          <img id="img_top"> src="<?= base_url('img/avatar.png'); ?>"> 
+          <div class="text-center">
+            <img class="zoom_img"  data-toggle="modal" data-target="#zoom_img" src="<?= base_url('img/zoom.png'); ?>"> 
+          </div>
+        </div>
+        <div class="imd-next">
+          <img src="<?= base_url('img/h.jpg'); ?>">
+        </div>
+        <div class="imd-next"> 
+          <img src="<?= base_url('img/r.jpg'); ?>">
+        </div>
+        <div class="imd-next">
+          <img src="<?= base_url('img/e.jpg'); ?>">
+        </div>
+        <div class="imd-next">
+          <img src="<?= base_url('img/k.jpg'); ?>">
+        </div>
+        <div class="imd-next">
+          <img src="<?= base_url('img/j.jpg'); ?>">
+        </div>
+    </div>
+  
+    <div>
+  		<span>Վիճակ</span>
+  		<h4>Նոր</h4>
+    </div>
 		<div class="txt-ad">TXT Շատ հարմար գին ու շատ բարձր որակ, միայն մեզ մոտ ննջասենյակի կահույքի հավաքածուների մեծ տեսականի
 			գունային տարբերակների առկայություն
 			ապառիկ առանց կանխավճարի
@@ -223,6 +249,26 @@
 
 
 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Modal zoom_img-->
+<div id="zoom_img" class="modal fade" role="dialog">
+  <div class="modal-dialog ">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">name ads</h4>
+      </div>
+      <div class="modal-body zoom_img_ads">
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

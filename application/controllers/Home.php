@@ -56,6 +56,30 @@ class Home extends CI_Controller {
 		$this->load->view('profile');
 		$this->load->view('footer');
 	}
+	public function contact()
+	{
+		$this->load->view('header');
+		$this->load->view('contact');
+		$this->load->view('footer');
+	}
+	public function account()
+	{
+		$this->load->view('header');
+		$this->load->view('account');
+		$this->load->view('footer');
+	}
+	public function notific()
+	{
+		$this->load->view('header');
+		$this->load->view('notific');
+		$this->load->view('footer');
+	}
+	public function blocked_user()
+	{
+		$this->load->view('header');
+		$this->load->view('blocked_user');
+		$this->load->view('footer');
+	}
 	public function logout()
 	{
 		$this->load->view('header');
