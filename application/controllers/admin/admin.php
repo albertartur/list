@@ -69,4 +69,19 @@ class Admin extends CI_Controller
     $section=$this->input->post('section');
     $this->admin_model->update_subcategorie($sub_id,$cat_id,$name,$section);
    }
+   public function Add_subcat_inputs(){
+    $sub_id=$this->input->post('sub_id');
+    $name=$this->input->post('name');
+    $this->admin_model->insert_subcat_input($sub_id,$name);
+   }
+   public function subcat_inputs($sub_id){
+    $data['all']=$this->admin_model->get_subcat_inputs($sub_id);
+    $this->load->view('admin/subcat_inputs',$data);
+   
+   }
+   public function Delete_subcat_input(){
+    $sub_id=$this->input->post('sub_id');
+    $input_name=$this->input->post('name');
+    $this->admin_model->delete_subcat_input($sub_id,$input_name);
+   }
 }

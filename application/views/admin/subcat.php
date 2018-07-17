@@ -37,6 +37,7 @@
 			<th>Update</th>
 			<th>Delete</th>
 			<th>Show</th>
+			<th>Subcategories_inputs</th>
 		</tr>
 		<?php foreach ($all as $value) :?>
 			<tr>
@@ -47,6 +48,7 @@
 				<td><input type="button" class="sub_update" value="Update"></td>
 				<td><input type="button" class="sub_delete" value="Delete"></td>
 				<td><input type="button" class="statement_show" value="Show"></td>
+				<td><a href="<?=base_url("admin/Admin/subcat_inputs/".$value['id'].'"')?>"><input type="button" class="subcat_inputs" value="Subcategories_inputs"></a></td>
 			</tr>
 		<?php endforeach; ?>
 	</table>

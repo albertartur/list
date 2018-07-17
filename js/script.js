@@ -98,4 +98,38 @@ $(document).ready(function(){
 			}
 		})
 	});
+	
+	$('#add_input_type').click(function(){
+		let n=$('#id_location option:selected').text();
+		let s=$('#sub_id').val();
+		// alert(n);
+		$.ajax({
+			url:base_url+"admin/Admin/Add_subcat_inputs",
+			type:'post',
+			data:{
+				name:n,
+				sub_id:s
+			},
+			success:function(elem){
+				// alert(elem);
+				location.reload();
+			}
+		})
+	});
+    $('.input_delete').click(function(){
+		let sub_id=$(this).parents('tr').find('.sub_id').html();
+		let name=$(this).parents('tr').find('.input_name').html();
+		
+		$.ajax({
+			url:base_url+"admin/Admin/Delete_subcat_input",
+			type:'post',
+			data:{
+				sub_id:sub_id,
+				name:name
+			},
+			success:function(elem){
+				location.reload();
+			}
+		})
+	});
 })
