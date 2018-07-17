@@ -47,4 +47,15 @@ class Admin_model extends CI_Model{
 		$this->db->where('id',$sub_id);
 		$this->db->update('subcategories',$data);
 	}
+	public function get_subcat_inputs($sub_id){
+		$query=$this->db->get_where('subcat_inputs',array('sub_id'=>$sub_id))->result_array();
+		return $query;
+	}
+	public function insert_subcat_input($sub_id,$name){
+		$this->db->insert('subcat_inputs',array('sub_id'=>$sub_id,'sub_input'=> $name));
+	}
+	public function delete_subcat_input($sub_id,$input_name){
+		$this->db->delete('subcat_inputs',array('sub_id'=>$sub_id,'sub_input'=>$input_name));
+	}
+
 }
