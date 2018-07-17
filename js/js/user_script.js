@@ -8,15 +8,19 @@ $('#contact_info').on('click',function(){
     var skype      = $('#skype').val();
     var viber      = $('#viber').val();
     var WhatsApp   = $('#WhatsApp').val();
-    
-  
+
+    $(get_number).text(number);
+    $(get_skype).text(skype);
+    $(get_viber).text(viber);
+    $(get_WhatsApp).text(WhatsApp);
+
 	  $.ajax({
 	  	   type: 'post',
 	  	   url:  base_url+'/UsersController/edit_contact_inf',
 	  	   data: {number:number, skype:skype, viber:viber, WhatsApp:WhatsApp},
 	  	   success: function(data)
 	  	   {
-	  	   	 alert(data);
+	  	   	 //alert(data);
 	  	   	
 	  	   }
 	  });

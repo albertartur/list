@@ -1,7 +1,3 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,8 +38,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			      </div>
 			</form>
       <div style="line-height: 42px;" class="nav navbar-nav navbar-right">
-        <a href="<?= base_url('/login'); ?>"> Իմ էջը</a>
-        <a class=" btn-a" href="#">Ավելացնել հայտարարություն</a>
+        <a href="<?= base_url('UsersController/show'); ?>?my_profil=Հայտարարություններ"> Իմ էջը</a>
+        <a class=" btn-a" href="<?= base_url('ProductController/add_product'); ?>?my_profil=Հայտարարություններ">Ավելացնել հայտարարություն</a>
       </div>
     </div>
   </div>

@@ -1,19 +1,40 @@
-<div class="wallet"><div class="l"><div class="t">Wallet Balance</div><div class="amount">300 dram</div><div class="number">Wallet Number 219833</div><div class="i">Wallet is a convenient and beneficial way to pay for services on List.am.<br><br>You can save up to 10% on our services when using the wallet.</div></div><div class="r"><div class="t">Add Funds</div><div class="tabs"><label><input type="radio" name="pay" value="telcell" checked="checked" onclick="$('#telcell, #easypay').hide();$('#telcell').show()"><img src="/img/po_telcell.png" alt="Telcell" height="30" width="120" title="Telcell"></label><label><input type="radio" name="pay" value="easypay" onclick="$('#telcell, #easypay').hide();$('#easypay').show()"><img src="/img/po_easypay.png" alt="EasyPay" height="30" width="120" title="EasyPay"></label></div><div class="c" id="telcell" style=""><b>Using Telcell payment terminals</b>
-<ol>
-<li>On the main terminal screen choose Other / Services</li><li>Choose List.am
-</li><li>Enter your wallet number: <span>219833</span>
-</li><li>Deposit money and press "Pay"
-</li></ol>
-The amount will be added to your List.am wallet instantly.</div><div class="c" id="easypay" style="display: none;"><b>Using Easy Pay payment terminals</b>
+	
+	<div class="container content-sm">
+		<div id="user-info">
+			<div class="col-md-3">
+				<h3>Դրամապանակում</h3>
+				<h2>200 դրամ</h2>
+				<p>Դրամապանակի համարը 583962
+Դրամապանակը List.am-ում վճարումներ կատարելու հարմար և արդյունավետ միջոց է:
 
-<ol>
-<li>On the main screen select payment option for List.am
-</li><li>Enter your wallet number: <span>219833</span></li><li>Press "Confirm"
-</li><li>Deposit money and press "Pay"
-</li></ol>
-The amount will be added to your List.am wallet instantly.</div><div class="i">Get a 5% discount when adding 40,000 dram or more!
-<br>
-Add 60,000 dram and receive a 10% discount.
-<small>
-For example, when adding 60,000 dram, 66,000 will be added to your List.am wallet.
-</small></div></div><div class="cb"></div></div>
+Դրամապանակի միջոցով Դուք կարող եք խնայել մեր ծառայությունների արժեքի մինչև 10%:</p>
+			</div>
+			<div class="col-md-8 border-l">
+				<h3>Լիցքավորել դրամապանակը</h3>
+				<input  class="vallet" type="radio" checked="" name="t" id="telcell">
+				<label for="telcell"><img src="<?= base_url('/img/po_telcell.png'); ?>"> </label>
+				<input  class="vallet" type="radio" name="t" id="easypay">
+				<label for="easypay"><img src="<?= base_url('/img/po_easypay.png'); ?>"> </label>
+				<div class="border"></div>
+				<div id="wallet-bg" class="col-md-3">
+					
+				</div>
+				<div id="wallet-txt" class="col-md-8">
+					<h5>Վճարում Telcell տերմինալների միջոցով</h5>
+					<ol>
+						<li>Telcell տերմինալի ցանկում ընտրեք "Այլ", "Այլ ծառայություններ"</li>
+						<li>Ընտրեք List.am</li>
+						<li>Մուտքագրեք Ձեր դրամապանակի համարը 583962</li>
+						<li>Մուտքագրեք գումարը և սեղմեք "Վճարել"</li>
+					</ol>
+					Գումարը կհաշվեգրվի Ձեր List.am-ի դրամապանակ ըստ գործող զեղչերի:
+					<p>
+						40,000 դրամ և ավելի վճարման դեպքում Դուք կստանաք 5% զեղչ
+						60,000 դրամ վճարման դեպքում` 10% զեղչ:
+						Օրինակ, եթե Դուք վճարեք 60,000 դրամ, Ձեր դրամապանակում կավելանա 66,000 դրամ:
+					</p>
+				</div>
+			</div>
+		</div>		
+	</div>
+</div>

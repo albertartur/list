@@ -77,10 +77,60 @@ $(document).ready(function() {
 				}
 			})
 	$('#add_preview').click(function(){
+		let loc = $('#loc').val()
+		let pric = $('#id_price').val()
+		let name = $('#id_title').val()
+		let txt = $('#id_desc').val()
+
+		$('#name_ads').html(name)
+		$('#price_ads').html(pric)
+		$('#country_ads').html(loc)
+		$('#img_ads').html(11)
+		$('#new_ads').html()
+		$('#txt_ads').html(txt)
+
+
 
 		$('#view_2').css('display','none');
 		$('#view_3').css('display','block');	
 
-	})
+	});
+	$('#top_img').attr('src',$('#iiii').children('img').eq(0).attr('src'));
+	$(document).on('click', '.img_next', function() {
+		$('.img_next').removeClass('active_img_ads');
+		let img = $(this).attr('src');
+		$('#top_img').attr('src', img);
+		$(this).addClass('active_img_ads');
+	});
+	$(document).on('click', '.zoom_img', function() {
+		let zoom = $('#top_img').attr('src');
+		$('#zoom_img_ads').attr('src', zoom);
+	});
+
+
+
+	var next_prev_click = 0;
+	$('#next').on('click', function() {
+		let iii = $('#iiii').children('img');
+		iii.eq(next_prev_click).removeClass('active_img_ads');
+		if (next_prev_click > -1 && next_prev_click < iii.length - 1) {
+			next_prev_click++;
+		} else {
+			next_prev_click = 0;
+		}
+		$('#top_img').attr('src', iii.eq(next_prev_click).attr('src'));
+		iii.eq(next_prev_click).addClass('active_img_ads');
+	});
+
+	$('#prev').on('click', function() {
+		let iii = $('#iiii').children('img');
+			if (next_prev_click > 0) {
+				next_prev_click--;
+			}
+			else{
+				next_prev_click = iii.length-1;
+			}
+		$('#top_img').attr('src', iii.eq(next_prev_click).attr('src'));
+	});
 
 });

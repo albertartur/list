@@ -300,7 +300,7 @@
 						<label for='id_price'>Price</label>
 					</div>
 					<div class="col-md-8">
-						<input maxlength="12" name="price" id="_idprice" type="text" class='inp inp-sm'>
+						<input maxlength="12" name="price" id="id_price" type="text" class='inp inp-sm'>
 						<select name="currency" id="_idcurrency" class='inp-xs'>
 							<option value="0" selected="selected">AMD</option>
 							<option value="1">USD</option>

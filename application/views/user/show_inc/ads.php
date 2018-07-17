@@ -1,9 +1,9 @@
-<h1>Հայտարարություներ</h1><br><br>
- 
-<div> 
-	ete  chka avelacrac haytararutyun nor cuyca talis
-<a href="">Ավելացնել Հայտարարություն</a><br><br>
+
+<div class="container content-sm user-my">	
+		<div id="user-info">
+			<h4>Այս պահին Դուք չունեք գործող հայտարարություններ:
+			</h4>
+			<a class="btn-a" href="">Ավելացնել հայտարարություն</a>
+		</div>		
+	</div>
 </div>
-
-
-<a href="">Բնակարան 5-րդ զանգվացում</a>

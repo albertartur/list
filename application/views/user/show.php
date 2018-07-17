@@ -6,7 +6,7 @@
 <script src="<?= base_url('js/js/user_script.js'); ?>"></script>
 
 <a href="<?= base_url('UsersController/logout'); ?>">Logout</a>
-<?php if($this->session->userdata('my_session')){ ?>
+<?php if($this->session->userdata('my_session') ){ ?>
 <?= $this->session->userdata('my_session'); ?>
 
 
@@ -22,7 +22,7 @@
        <!-- ads ---> 
 <?php
      if(!empty($_GET['my_profil']) && $_GET['my_profil']=='Հայտարարություններ')
-     { $this->load->view('user/show_inc/ads'); }
+     { $this->load->view('user/show_inc/ads');  }
 ?>
        <!-- ads ---> 
 
@@ -37,8 +37,6 @@
      <!-- messages ---> 
 
 
-
-
       <!-- wallet ---> 
 <?php
      if(!empty($_GET['my_profil']) && $_GET['my_profil']=='Դրամապանակ')
@@ -47,4 +45,6 @@
        <!-- wallet --->        
 
 
-<?php }else{redirect(base_url('UsersController/index'));} ?>
+<?php }else{redirect(base_url('UsersController/index'));}    $this->load->view('footer');?>
+
+
