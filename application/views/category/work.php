@@ -8,7 +8,7 @@
 			</ol>
 		</div>
 	</div>
-	<div class="col-md-3" id="left_content">
+	<div class="col-md-3 " id="left_content">
 		<div id="left_manu">
 			<h4>Հայտարարության տեսակը</h4>
 			<div>

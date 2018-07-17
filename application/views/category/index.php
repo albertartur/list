@@ -47,26 +47,27 @@
 	<div class="col-md-9" id="main_content">
 		<div class="top_products">
 			<h2>Տոպ հայտարարություններ</h2>
+
 			<div class="top_products_grid">
 				<div class="img_list">
-					<img     width = "100%" height = "162px" src="<?= base_url('img/111.JPG'); ?>">
+					<a href=""> <img     width = "100%" height = "162px" src="<?= base_url('img/111.JPG'); ?>"></a>
 				</div>
-				<div class="name_list">Օրիգինալ, Բրենդային կոշիկներ ԱՄՆ-ից + 10% Զեղչ մինչև հուլիսի 18-ը</div>
-			<span>pric</span>
+				<div class="name_list"><a href=""> Օրիգինալ, Բրենդային կոշիկներ ԱՄՆ-ից + 10% Զեղչ մինչև հուլիսի 18-ը</a></div>
+				<span>pric</span>
 			</div>
 			<div class="top_products_grid">
-				<div  class="img_list">
-					<img     width = "100%" height = "162px" src="<?= base_url('img/111.JPG'); ?>">
+				<div class="img_list">
+					<a href=""> <img     width = "100%" height = "162px" src="<?= base_url('img/111.JPG'); ?>"></a>
 				</div>
-				<div class="name_list">Օրիգինալ, Բրենդային կոշիկներ ԱՄՆ-ից + 10% Զեղչ մինչև հուլիսի 18-ը</div>
-			<div>pric</div>
+				<div class="name_list"><a href=""> Օրիգինալ, Բրենդային կոշիկներ ԱՄՆ-ից + 10% Զեղչ մինչև հուլիսի 18-ը</a></div>
+				<span>pric</span>
 			</div>
 			<div class="top_products_grid">
-				<div  class="img_list">
-					<img     width = "100%" height = "162px" src="<?= base_url('img/111.JPG'); ?>">
+				<div class="img_list">
+					<a href=""> <img     width = "100%" height = "162px" src="<?= base_url('img/111.JPG'); ?>"></a>
 				</div>
-				<div class="name_list">Օրիգինալ, Բրենդային կոշիկներ ԱՄՆ-ից + 10% Զեղչ մինչև հուլիսի 18-ը</div>
-			<div>pric</div>
+				<div class="name_list"><a href=""> Օրիգինալ, Բրենդային կոշիկներ ԱՄՆ-ից + 10% Զեղչ մինչև հուլիսի 18-ը</a></div>
+				<span>pric</span>
 			</div>
 			<div class="top_products_grid"></div>
 			<div class="top_products_grid"></div>

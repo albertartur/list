@@ -59,11 +59,15 @@ $route['my'] = 'home/my';
 $route['messages'] = 'home/messages';
 $route['wallet'] = 'home/wallet';
 $route['profile'] = 'home/profile';
+$route['contact'] = 'home/contact';
+$route['account'] = 'home/account';
+$route['notific'] = 'home/notific';
+$route['blocked_user'] = 'home/blocked_user';
 $route['logout'] = 'home/logout';
 $route['category/ads'] = 'category/ads';
 
 
-
+$route['user'] = 'UsersController';
 $route['translate_uri_dashes'] = FALSE;
 $route['admin/home'] = 'admin/admin/home';
 $route['admin/login'] = 'admin/admin/index';

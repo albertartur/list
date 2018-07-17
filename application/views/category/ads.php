@@ -11,10 +11,52 @@
 	</div>
 	<div class="col-md-9" id="main_content_ads">
 		<h2>Name ads</h2>
-		<span>price 360,000 ֏ </span> <span class="glyphicon glyphicon-globe">Երևան › Աջափնյակ</span>
-		<div id="img_ads"></div>
-		<span>Վիճակ</span>
-		<h4>Նոր</h4>
+		<div>
+      <span>price 360,000 ֏ </span> <span class="glyphicon glyphicon-globe">Երևան › Աջափնյակ</span>  
+    </div>
+
+    		<div id="img_ads">
+          <img id="top_img" src=""> 
+          <div class="text-center">
+            <img id="prev" src="<?= base_url('img/prev.png'); ?>">
+            <img class="zoom_img"  data-toggle="modal" data-target="#zoom_img" src="<?= base_url('img/zoom.png'); ?>"> 
+             <img id="next" src="<?= base_url('img/next.png'); ?>">
+          </div>
+        </div>
+        <div id="iiii">
+          <img class="img_next" src="<?= base_url('img/h.jpg'); ?>">
+          <img class="img_next" src="<?= base_url('img/r.jpg'); ?>">
+          <img class="img_next" src="<?= base_url('img/e.jpg'); ?>">
+          <img class="img_next" src="<?= base_url('img/k.jpg'); ?>">
+          <img class="img_next" src="<?= base_url('img/j.jpg'); ?>">
+        </div>
+    <div>
+  		<span>Վիճակ</span>
+  		<h4>Նոր</h4>
+    </div>
+    <!-- ete bnakarannaaa
+         -->    <div class="row">
+                    <div class="col-md-3">
+                        <span>Շինության տիպը</span>
+                        <p class="text-b">11</p>
+                    </div>
+                    <div class="col-md-2">
+                        <span>Սենյակներ</span>
+                         <p class="text-b">11</p>
+                    </div>
+                    <div class="col-md-2">
+                        <span>Մակերես</span>
+                         <p class="text-b">11</p>
+                    </div>
+                    <div class="col-md-2">
+                        <span>Հարկ Հարկը</span>
+                         <p class="text-b">11</p>
+                    </div>
+                    <div class="col-md-3">
+                        <span>Հարկերի քանակ</span>
+                         <p class="text-b">11</p>
+                    </div>
+                </div>
 		<div class="txt-ad">TXT Շատ հարմար գին ու շատ բարձր որակ, միայն մեզ մոտ ննջասենյակի կահույքի հավաքածուների մեծ տեսականի
 			գունային տարբերակների առկայություն
 			ապառիկ առանց կանխավճարի
@@ -223,6 +265,26 @@
 
 
 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Modal zoom_img-->
+<div id="zoom_img" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">name ads</h4>
+      </div>
+      <div class="modal-body">
+        <img id="zoom_img_ads" src="">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
