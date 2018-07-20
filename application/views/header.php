@@ -28,7 +28,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
     	<form class="navbar-form navbar-left" action="/action_page.php">
 			      <div class=" input-group ">
-			        <input type="text" class="form-control" placeholder="Search" name="search">
+			        <input type="text" class="form-control" placeholder="Search" name="search" id='search'>
 			        <div class=" input-group-btn">
 			          <button class="btn btn-default" type="submit">
 			            <i class="glyphicon glyphicon-search"></i>
@@ -39,7 +39,7 @@
 			</form>
       <div style="line-height: 42px;" class="nav navbar-nav navbar-right">
         <a href="<?= base_url('UsersController/show'); ?>?my_profil=Հայտարարություններ"> Իմ էջը</a>
-        <a class=" btn-a" href="<?= base_url('ProductController/add_product'); ?>?my_profil=Հայտարարություններ">Ավելացնել հայտարարություն</a>
+        <a class=" btn-a" href="<?= base_url('add_st'); ?>">Ավելացնել հայտարարություն</a>
       </div>
     </div>
   </div>

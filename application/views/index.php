@@ -1,73 +1,28 @@
 <div id="content" class="container">
 	<div class="col-md-3" id="left_content">
 		<div id="left_manu">
-			<ul>
-				<li><a href="	">1</a>
-					<ul>
-						<li><a href="	">1</a></li>
-					</ul>
-				</li>
-				<li><a class="" href="	">1dfxxg</a>
-					<ul>
-						<li><a href="	">2</a></li>
-					</ul>
-				</li>
-				<li><a href="	">1fgdf</a>
-					<ul>
-						<li><a href="	">3</a></li>
-					</ul>
-				</li>
-				<li><a href="	">1fd</a>
-					<ul>
-						<li><a href="	">4</a></li>
-					</ul>
-				</li>
-				<li><a href="	">fd1</a>
-					<ul>
-						<li><a href="	">5</a></li>
-					</ul>
-				</li>
-				<li><a href="	">1fdg</a>
-					<ul>
-						<li><a href="	">ss6</a></li>
-					</ul>
-				</li>
-				<li><a href="	">1fd</a>
-					<ul>
-						<li><a href="	">7</a></li>
-					</ul>
-				</li>
-				<li><a href="	">1</a>
-					<ul>
-						<li><a href="	">1</a></li>
-					</ul>
-				</li>
-				<li><a href="	">1</a>
-					<ul>
-						<li><a href="	">1</a></li>
-					</ul>
-				</li>
-				<li><a href="	">1</a>
-					<ul>
-						<li><a href="	">1</a></li>
-					</ul>
-				</li>
-				<li><a href="	">1</a>
-					<ul>
-						<li><a href="	">1</a></li>
-					</ul>
-				</li>
-				<li><a href="	">1</a>
-					<ul>
-						<li><a href="	">1</a></li>
-					</ul>
-				</li>
-				<li><a href="	">1</a>
-					<ul>
-						<li><a href="	">1</a></li>
-					</ul>
-				</li>
-			</ul>
+			<div id='cat'>
+
+				<ul style="display: inline;" id='off'>
+					<?php
+					$k='';
+					foreach ($cats as  $value) {
+						$k=$k."<li class='h' data-id={$value['id']} ><a href='#' >{$value['name']}</a></li>";
+					}
+					echo $k;
+					?>
+					<li><a href="#" data-id=12 class='a'>Services</a></li>
+					<li><a href="#" data-id=13 class='a'>Jobs</a></li>
+				</ul>
+			</div>
+		<!-- First section's categories div lev01 -->
+		
+			<div class='col-md-3' id='sub_cat_home'>
+				<ul>
+					<li><a href="#" data-id=2 class='a'>Services</a></li>
+					<li><a href="#" data-id=3 class='a'>Jobs</a></li>
+				</ul>
+			</div>
 		</div>
 		<div id="left_reclame">
 			<img src="<?= base_url('img/adwords-google2.png'); ?>">

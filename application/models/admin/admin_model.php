@@ -57,5 +57,24 @@ class Admin_model extends CI_Model{
 	public function delete_subcat_input($sub_id,$input_name){
 		$this->db->delete('subcat_inputs',array('sub_id'=>$sub_id,'sub_input'=>$input_name));
 	}
+	public function show_wait_statement(){
+		$query=$this->db->get('statement')->result_array();
+		return $query;
+	}
+	public function add_to_product($id,$sub_id,$use_id,$data_of_put,$arr,$location,$name,$desc){
+		$data=array(
+		       'name'=>$name,
+		        'sub_id'=>$sub_id,
+		        'description'=>$desc,
+		        'location'=>$location,
+		        'data_of_put'=>$data_of_put,
+		         'data_of_update'=>Null,
+		         'info_array'=>$arr,
+		          'us_id'=>$use_id
+		      );
+		$this->db->insert('products',$data);
+		print_r($this->db->last_query());
+		$this->db->delete('statement',array('id'=>$id));
+	}
 
 }

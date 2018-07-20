@@ -84,4 +84,28 @@ class Admin extends CI_Controller
     $input_name=$this->input->post('name');
     $this->admin_model->delete_subcat_input($sub_id,$input_name);
    }
+    public function show_wait_statement(){
+    $data['wait_statement']=$this->admin_model->show_wait_statement();
+    $this->load->view('admin/wait_statement',$data);
+    }
+    public function add_product(){
+      $id=$this->input->post('id');
+      $sub_id=$this->input->post('sub_id');
+      $use_id=$this->input->post('use_id');
+      $data_of_put=$this->input->post('data_of_put');
+      $info_array=$this->input->post('info_array');
+      $info_array=unserialize($info_array);
+      $arr=json_decode($info_array,true);
+      // print_r($arr);
+      $location=$arr['location'];    
+      $name=$arr['name'];    
+      $desc=$arr['description'];   
+      unset($arr['location']);
+      unset($arr['name']);
+      unset($arr['description']);
+      // print_r($arr);
+      // echo $name;
+      $arr=serialize($arr);
+      $this->admin_model->add_to_product($id,$sub_id,$use_id,$data_of_put,$arr,$location,$name,$desc);
+  }
 }

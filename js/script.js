@@ -132,4 +132,30 @@ $(document).ready(function(){
 			}
 		})
 	});
+	$('.add_product').click(function(){
+		let tr=$(this).closest('tr');
+		let id=$(tr).children().eq(0).text();
+		let sub_id=$(tr).children().eq(1).text();
+		let use_id=$(tr).children().eq(2).text();
+		let data_of_put=$(tr).children().eq(3).text();
+		let info_array=$(tr).children().eq(4).text();
+		$.ajax({
+			url:base_url+"admin/Admin/add_product",
+			type:'post',
+			data:{
+				id:id,
+				sub_id:sub_id,
+				use_id:use_id,
+				data_of_put:data_of_put,
+				info_array:info_array
+			},
+			success:function(elem){
+				//alert('all is okay ');
+				// console.log(elem);
+			}
+
+		})
+		$(this).closest('tr').remove();
+	})
+	
 })

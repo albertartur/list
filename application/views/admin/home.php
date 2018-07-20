@@ -9,10 +9,12 @@
 </head>
 <body>
 	<h1>Welcome to Admin page</h1>
+	<a href="<?=base_url("admin/Admin/show_wait_statement")?>"><input type="button" value="Show_wait_statement" style="margin-left: 89%;"></a>
 	<br>
 	Name:<input type="text" id="cat_name">
 	Section:<input type="number" id="cat_section">
 	<input type="button" id="add_cat" value="ADD">
+	
 	<br><br>
 	<table border="1" cellpadding="13">
 		<tr>
