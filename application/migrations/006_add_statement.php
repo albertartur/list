@@ -26,7 +26,7 @@ class Migration_add_statement extends CI_Migration {
 			
 			'info_array'=>array(
 			     'type'=>'VARCHAR',
-			     'constraint' => '50'
+			     'constraint' => '300'
 			 ),
 			'done'=>array(
 				'type'=>'int',

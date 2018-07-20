@@ -40,6 +40,7 @@
     border: none;
 }
 #cat{
+	padding-left: 15px;
     border-left:1px solid grey; 
     position: relative;
     left: 0px;
@@ -49,7 +50,14 @@
     border-left:1px solid grey; 
     position: relative;
     left: 0px;
-    display:block;
+    display:none;
+}
+#sub_cat_home{
+    border-left:1px solid grey; 
+    position: absolute;
+    top:0px;
+    left: 200px;
+    display:none;
 }
 .borderdot{
     margin: 20px;
@@ -59,6 +67,11 @@
 .rad{
     padding-right: 10px;
 }
+
+#cat:hover + #sub_cat_home{
+	display: block;
+}
+
 label{
     padding-top: 0;
 }
@@ -115,6 +128,7 @@ label{
  body{
 	background: #F4F4F4;
 }
+
 .a-manu2{
 	display: none;
 }
@@ -395,6 +409,7 @@ ul li ul li:hover {
 	width: 32%;
 	height: 100%;
 	transition: .6s ease-in;
+
 }
 .top_products_grid>a{
 	padding: 100px;
@@ -418,6 +433,7 @@ ul li ul li:hover {
 	width: 32%;
 	height: 201px;
 	transition: .6s ease-in;
+	border: 1px solid red;
 }
 .ord_products_list{
 	width: 100%;
@@ -443,13 +459,28 @@ ul li ul li:hover {
 	background: #fff;
 	padding-bottom: 150px;
 	box-shadow: 0px 0px 8px -1px #ccc;
-
+	padding-left: 32px;
+    padding-top: 20px;
+}
+#sp span{
+	margin-left: 10px;
+}
+#Exchange{
+	border-radius: 5px;
+	background: #ccc;
+	text-align: center;
+	padding: 5px;
+	box-shadow: 0px 0px 8px -1px #ccc;
 }
 #right_content_ads{
 	padding-top: 20px;
 	background: #fff;
 	box-shadow: 0px 0px 8px -1px #ccc;
 
+}
+.img_list img{
+ 	width:100%;
+ 	height:162px
 }
 #img_ads{
 	margin: 0 auto;
@@ -458,6 +489,9 @@ ul li ul li:hover {
 	position: relative;
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+#img_ads_d{
+	margin-top: 20px;
 }
 .txt-ad{
 	font-size: 15px;
@@ -559,6 +593,26 @@ ul li ul li:hover {
 	border-radius: 5px;
 	transform:scale(1.2,1.2);
 }
+.thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+  }
+ #img_ads_d img{
+	width: 100px
+ }
+ #car_info>div>div>div:nth-child(2){
+ 	font-weight: bold;
+ }
+ #info td{
+ 	padding-left: 20px;
+ 	padding-right: 20px;
+ 	border-right: .5px solid #ccc;
+ }
+ .td_ads{
+ 	font-weight: bold;
+ }
+
 footer>div{
 	line-height: 6vh;
 }

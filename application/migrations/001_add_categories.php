@@ -20,7 +20,7 @@ class Migration_add_categories extends CI_Migration {
 				'constraint' => '100',
 			),
 			'glob' => array(
-				'type' => 'INT',
+				'type' => 'INT'
 				
 			),
 		));

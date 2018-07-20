@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Июл 16 2018 г., 22:24
--- Версия сервера: 10.1.31-MariaDB
--- Версия PHP: 7.2.3
+-- Время создания: Июл 19 2018 г., 11:25
+-- Версия сервера: 10.1.28-MariaDB
+-- Версия PHP: 5.6.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -117,6 +117,15 @@ CREATE TABLE `products` (
   `us_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Дамп данных таблицы `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `sub_id`, `description`, `location`, `data_of_put`, `data_of_update`, `info_array`, `us_id`) VALUES
+(1, 'electronic', 32, 'a', 'Avan', '2018-07-19 06:57:02', '2018-07-19 09:21:22', 'a:7:{s:4:\"type\";s:7:\"Offered\";s:9:\"condition\";s:4:\"Used\";s:5:\"price\";s:4:\"5555\";s:8:\"currency\";s:3:\"AMD\";s:6:\"photos\";a:1:{i:0;a:0:{}}s:6:\"status\";s:5:\"Owner\";s:0:\"\";s:0:\"\";}', 3),
+(2, 'car', 15, 'a', 'Arabkir', '2018-07-19 07:17:03', '2018-07-19 09:23:20', 'a:6:{s:4:\"type\";s:6:\"Wanted\";s:4:\"make\";s:3:\"BMW\";s:5:\"price\";s:5:\"20000\";s:8:\"currency\";s:3:\"AMD\";s:6:\"photos\";a:1:{i:0;a:0:{}}s:0:\"\";s:0:\"\";}', 3),
+(3, 'chair', 57, 'a', 'Shengavit', '2018-07-19 07:35:54', '2018-07-19 09:24:04', 'a:6:{s:4:\"type\";s:6:\"Wanted\";s:9:\"condition\";s:4:\"Used\";s:5:\"price\";s:6:\"100000\";s:8:\"currency\";s:3:\"AMD\";s:6:\"photos\";a:1:{i:0;a:0:{}}s:0:\"\";s:0:\"\";}', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -128,7 +137,7 @@ CREATE TABLE `statement` (
   `sub_id` int(10) UNSIGNED NOT NULL,
   `us_id` int(11) NOT NULL,
   `data_of_put` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `info_array` varchar(50) NOT NULL,
+  `info_array` varchar(300) NOT NULL,
   `done` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1205,13 +1214,13 @@ ALTER TABLE `image`
 -- AUTO_INCREMENT для таблицы `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `statement`
 --
 ALTER TABLE `statement`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `subcategories`
