@@ -5,7 +5,7 @@
 				<div class="border"></div>
 				<div class="row ">
 					<div class="col-md-2"><input type="checkbox" id="newmsgg" checked="" name=""></div>
-					<div class="col-md-7"><label class="lbl_txt" for="newmsgg"><span> Նոր հաղորդագրությունների և պատասխանների ծանուցումներ</span></label></div>
+					<div class="col-md-7"><label class="lbl_txt" for="newmsgg"><span  id="title"> Նոր հաղորդագրությունների և պատասխանների ծանուցումներ</span></label></div>
 				</div>
 				<div class="row">
 					<div class="col-md-2"><input type="checkbox" id="checknew" checked="" name=""></div>

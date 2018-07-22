@@ -1,6 +1,4 @@
 <?php
-
-
 class UsersModel extends CI_Model
 {
   
@@ -111,7 +109,9 @@ class UsersModel extends CI_Model
       echo 'your profil is deleteed';
         }
 
-        else{echo 'Xndrum enq chisht mutqagreq dzer  gaxtanabr@';}
+      else{
+          echo 'Xndrum enq chisht mutqagreq dzer  gaxtanabr@';
+      }
        
     }     
     public function get_cats($sec_id){
@@ -127,18 +127,65 @@ class UsersModel extends CI_Model
       $query=$this->db->get_where('subcat_inputs',array('sub_id'=>$sub_id))->result_array();
       return $query;
     }
-    public function add_statement($sub_id,$arr_serializ){
+    ///////////////////////////////////////////////////////////////
+    public function add_statement($sub_id,$arr_serializ,$user_id){
         $data=array(
             'id'=>Null,
             'sub_id'=>$sub_id,
-            'us_id'=>3,
+            'us_id'=>$user_id,
             'data_of_put'=>Null,
             'info_array'=>$arr_serializ
             );
-    $this->db->insert('statement',$data);
+        $this->db->insert('statement',$data);
 
       }
-      
+    public function get_pro($id){
+        $query=$this->db->get_where('products',array('sub_id'=>$id))->result_array();
+        return $query;
+    }
     
+    public function get_pro_ads($id){
+        $query=$this->db->get_where('products',array('id'=>$id))->result_array();
+        return $query;
+    }
+    public function get_all_pro(){
+      $x = rand(0,3);
+        $query=$this->db->get('products',20,$x)->result_array();
+        return $query;
+    }
+    public function get_rand_ads($id){
+        $this->db->select('sub_id');
+        $sub_id=$this->db->get_where('products',array('id'=>$id))->row();
+        $query = $this->db->get_where('products',array('sub_id'=>$sub_id->sub_id),2)->result_array();
+        return $query;
+    }
+    public function get_user_ads($id){
+        $this->db->select('us_id');
+        $us_id = $this->db->get_where('products',array('id'=>$id))->row();
+        $query = $this->db->get_where('users',array('id'=>$us_id->us_id))->result_array()[0];
+        return $query;
+    }
+    public function get_my_user_ads($id){
+        $query = $this->db->get_where('users',array('id'=>$id))->result_array();
+        return $query[0];
+    }
+    public function get_my_ads($id){
+        if ($id) {   
+            $query = $this->db->get_where('products',array('us_id'=>$id),4)->result_array();
+            return $query;
+        }
+        else{
+            header('Location:'.base_url('UsersController/index'));
+        }
+    }
+    public function search_el(){
+        $this->db->select('id,name,description');
+        $query=$this->db->get('products')->result_array();
+        return $query;
+    }
+    public function get_top_pro($id){
+        $query=$this->db->get_where('products',array('sub_id'=>$id),3)->result_array();
+        return $query;
+    }
 
 }

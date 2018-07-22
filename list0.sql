@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1
--- Время создания: Июл 19 2018 г., 11:25
--- Версия сервера: 10.1.28-MariaDB
--- Версия PHP: 5.6.32
+-- Host: 127.0.0.1
+-- Generation Time: Jul 22, 2018 at 09:45 PM
+-- Server version: 10.1.33-MariaDB
+-- PHP Version: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `list`
+-- Database: `list`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `admin`
+-- Table structure for table `admin`
 --
 
 CREATE TABLE `admin` (
@@ -34,7 +34,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`password`, `login`) VALUES
@@ -43,7 +43,7 @@ INSERT INTO `admin` (`password`, `login`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -53,7 +53,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `glob`) VALUES
@@ -74,7 +74,7 @@ INSERT INTO `categories` (`id`, `name`, `glob`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `image`
+-- Table structure for table `image`
 --
 
 CREATE TABLE `image` (
@@ -85,7 +85,7 @@ CREATE TABLE `image` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -93,7 +93,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`version`) VALUES
@@ -102,34 +102,54 @@ INSERT INTO `migrations` (`version`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(40) NOT NULL,
   `sub_id` int(10) UNSIGNED NOT NULL,
-  `description` char(1) NOT NULL,
+  `description` text NOT NULL,
   `location` varchar(50) NOT NULL,
   `data_of_put` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `data_of_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `info_array` varchar(200) NOT NULL,
+  `info_array` text NOT NULL,
   `us_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `sub_id`, `description`, `location`, `data_of_put`, `data_of_update`, `info_array`, `us_id`) VALUES
 (1, 'electronic', 32, 'a', 'Avan', '2018-07-19 06:57:02', '2018-07-19 09:21:22', 'a:7:{s:4:\"type\";s:7:\"Offered\";s:9:\"condition\";s:4:\"Used\";s:5:\"price\";s:4:\"5555\";s:8:\"currency\";s:3:\"AMD\";s:6:\"photos\";a:1:{i:0;a:0:{}}s:6:\"status\";s:5:\"Owner\";s:0:\"\";s:0:\"\";}', 3),
 (2, 'car', 15, 'a', 'Arabkir', '2018-07-19 07:17:03', '2018-07-19 09:23:20', 'a:6:{s:4:\"type\";s:6:\"Wanted\";s:4:\"make\";s:3:\"BMW\";s:5:\"price\";s:5:\"20000\";s:8:\"currency\";s:3:\"AMD\";s:6:\"photos\";a:1:{i:0;a:0:{}}s:0:\"\";s:0:\"\";}', 3),
-(3, 'chair', 57, 'a', 'Shengavit', '2018-07-19 07:35:54', '2018-07-19 09:24:04', 'a:6:{s:4:\"type\";s:6:\"Wanted\";s:9:\"condition\";s:4:\"Used\";s:5:\"price\";s:6:\"100000\";s:8:\"currency\";s:3:\"AMD\";s:6:\"photos\";a:1:{i:0;a:0:{}}s:0:\"\";s:0:\"\";}', 3);
+(3, 'chair', 57, 'a', 'Shengavit', '2018-07-19 07:35:54', '2018-07-19 09:24:04', 'a:6:{s:4:\"type\";s:6:\"Wanted\";s:9:\"condition\";s:4:\"Used\";s:5:\"price\";s:6:\"100000\";s:8:\"currency\";s:3:\"AMD\";s:6:\"photos\";a:1:{i:0;a:0:{}}s:0:\"\";s:0:\"\";}', 3),
+(4, 'jhhhhhhhhhh', 32, 't', 'Avan', '2018-07-19 19:20:24', '2018-07-19 19:31:32', 'a:7:{s:4:\"type\";s:8:\"Exchange\";s:9:\"condition\";s:4:\"Used\";s:5:\"price\";s:3:\"100\";s:8:\"currency\";s:3:\"AMD\";s:6:\"photos\";a:1:{i:0;a:0:{}}s:6:\"status\";s:5:\"Owner\";s:0:\"\";s:0:\"\";}', 3),
+(5, 'jhhhhhhhhhh', 32, 't', 'Avan', '2018-07-19 19:20:31', '2018-07-19 19:31:33', 'a:7:{s:4:\"type\";s:8:\"Exchange\";s:9:\"condition\";s:4:\"Used\";s:5:\"price\";s:3:\"100\";s:8:\"currency\";s:3:\"AMD\";s:6:\"photos\";a:1:{i:0;a:0:{}}s:6:\"status\";s:5:\"Owner\";s:0:\"\";s:0:\"\";}', 3),
+(6, 'hvhvh hh hh h', 58, 'y', 'Erebuni', '2018-07-20 17:28:17', '2018-07-20 17:28:47', 'a:6:{s:4:\"type\";s:8:\"Exchange\";s:9:\"condition\";s:4:\"Used\";s:5:\"price\";s:3:\"200\";s:8:\"currency\";s:3:\"AMD\";s:6:\"photos\";a:1:{i:0;a:0:{}}s:0:\"\";s:0:\"\";}', 3),
+(7, 'fbn vc  bvc', 58, 'b', 'Erebuni', '2018-07-20 17:24:17', '2018-07-20 17:28:48', 'a:6:{s:4:\"type\";s:6:\"Wanted\";s:9:\"condition\";s:4:\"Used\";s:5:\"price\";s:3:\"202\";s:8:\"currency\";s:3:\"AMD\";s:6:\"photos\";a:1:{i:0;a:0:{}}s:0:\"\";s:0:\"\";}', 3),
+(8, 'fggggfg', 129, 'f', 'Avan', '2018-07-20 18:42:03', '2018-07-20 18:42:40', 'a:3:{s:8:\"emp_type\";s:10:\"Internship\";s:9:\"stat_jobs\";s:6:\"Dealer\";s:0:\"\";s:0:\"\";}', 3),
+(10, 'hayt ', 30, 'g', 'Nor Nork', '2018-07-20 20:09:37', '2018-07-20 20:10:06', 'a:5:{s:4:\"type\";s:8:\"Exchange\";s:5:\"price\";s:3:\"500\";s:8:\"currency\";s:3:\"AMD\";s:6:\"photos\";a:0:{}s:0:\"\";s:0:\"\";}', 3),
+(13, 'hjmddddddddddddd', 13, 'j', 'Arabkir', '2018-07-20 21:36:23', '2018-07-20 21:36:30', 'a:14:{s:4:\"type\";s:8:\"Exchange\";s:4:\"make\";s:12:\"Aston Martin\";s:4:\"year\";s:4:\"2003\";s:5:\"model\";s:4:\"bgbf\";s:7:\"mileage\";s:5:\"fgbfg\";s:6:\"engine\";s:11:\"Natural Gas\";s:12:\"transmission\";s:6:\"Manual\";s:5:\"wheel\";s:5:\"Right\";s:7:\"customs\";s:3:\"Yes\";s:5:\"price\";s:4:\"1000\";s:8:\"currency\";s:3:\"AMD\";s:6:\"photos\";a:0:{}s:8:\"stat_veh\";s:5:\"Owner\";s:0:\"\";s:0:\"\";}', 3),
+(14, 'sdsadsad', 2, 's', 'Erebuni', '2018-07-20 21:49:19', '2018-07-20 21:49:26', 'a:9:{s:4:\"type\";s:8:\"Exchange\";s:7:\"address\";s:7:\"qwsxsax\";s:8:\"constype\";s:6:\"Panels\";s:5:\"rooms\";s:1:\"4\";s:5:\"price\";s:8:\"10000000\";s:8:\"currency\";s:3:\"USD\";s:6:\"photos\";a:0:{}s:6:\"status\";s:6:\"Agency\";s:0:\"\";s:0:\"\";}', 3),
+(15, 'ujhujhj', 17, 'y', 'Maralik', '2018-07-20 23:20:11', '2018-07-20 23:20:27', 'a:6:{s:4:\"type\";s:8:\"Exchange\";s:9:\"condition\";s:4:\"Used\";s:5:\"price\";s:11:\"10000000000\";s:8:\"currency\";s:3:\"AMD\";s:6:\"photos\";a:1:{i:0;a:0:{}}s:0:\"\";s:0:\"\";}', 3),
+(16, 'Bufer', 31, 'f', 'Avan', '2018-07-21 12:52:00', '2018-07-21 12:52:15', 'a:4:{s:4:\"type\";s:8:\"Exchange\";s:5:\"price\";s:4:\"5670\";s:8:\"currency\";s:3:\"USD\";s:0:\"\";s:0:\"\";}', 3),
+(17, '\\.>|\"', 31, ',', 'Avan', '2018-07-21 12:59:18', '2018-07-21 12:59:43', 'a:4:{s:4:\"type\";s:8:\"Exchange\";s:5:\"price\";s:4:\"1010\";s:8:\"currency\";s:3:\"AMD\";s:0:\"\";s:0:\"\";}', 3),
+(18, 'HP-8500', 32, 'HP-8500', 'Kanaker-Zeytun', '2018-07-21 13:23:42', '2018-07-21 13:23:49', 'a:7:{s:4:\"type\";s:8:\"Exchange\";s:9:\"condition\";s:3:\"New\";s:5:\"price\";s:4:\"1000\";s:8:\"currency\";s:3:\"AMD\";s:6:\"photos\";a:1:{i:0;a:0:{}}s:6:\"status\";s:6:\"Agency\";s:0:\"\";s:0:\"\";}', 3),
+(19, 'free', 16, 'gugh j jhjjjj b jj j j', 'Avan', '2018-07-21 14:19:03', '2018-07-21 14:19:16', 'a:6:{s:4:\"type\";s:8:\"Exchange\";s:9:\"condition\";s:3:\"New\";s:5:\"price\";s:4:\"1000\";s:8:\"currency\";s:3:\"AMD\";s:6:\"photos\";a:0:{}s:0:\"\";s:0:\"\";}', 3),
+(20, 'Mobli', 31, 'Mobli', 'Avan', '2018-07-21 15:44:38', '2018-07-21 15:45:15', 'a:3:{s:4:\"type\";s:8:\"Exchange\";s:5:\"price\";s:4:\"1000\";s:8:\"currency\";s:3:\"AMD\";}', 6),
+(22, 'lll', 31, 'llllllllllllllllllllllllllllllllllllll', 'Avan', '2018-07-21 17:24:49', '2018-07-21 17:25:07', 'a:3:{s:4:\"type\";s:7:\"Offered\";s:5:\"price\";s:3:\"100\";s:8:\"currency\";s:3:\"AMD\";}', 6),
+(23, 'JKGHK', 105, 'GKJHKHJGK', 'Avan', '2018-07-22 17:03:56', '2018-07-22 17:04:14', 'a:1:{s:6:\"photos\";a:0:{}}', 6),
+(26, 'jhghgh', 135, 'fhfghfgh', 'Avan', '2018-07-22 18:40:42', '2018-07-22 18:41:04', 'a:2:{s:8:\"emp_type\";s:9:\"Temporary\";s:9:\"stat_jobs\";s:5:\"Owner\";}', 6),
+(27, 'web', 128, 'cragravorum', 'Arabkir', '2018-07-22 19:03:54', '2018-07-22 19:04:03', 'a:2:{s:8:\"emp_type\";s:9:\"Temporary\";s:9:\"stat_jobs\";s:5:\"Owner\";}', 6),
+(28, 'Finansist', 128, 'Bankir', 'Nor Nork', '2018-07-22 19:11:34', '2018-07-22 19:11:44', 'a:2:{s:8:\"emp_type\";s:9:\"Temporary\";s:9:\"stat_jobs\";s:6:\"Dealer\";}', 6),
+(29, 'btc miner', 128, 'btc miner', 'Aragats', '2018-07-22 19:12:21', '2018-07-22 19:12:30', 'a:2:{s:8:\"emp_type\";s:10:\"Internship\";s:9:\"stat_jobs\";s:5:\"Owner\";}', 6);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `statement`
+-- Table structure for table `statement`
 --
 
 CREATE TABLE `statement` (
@@ -137,14 +157,14 @@ CREATE TABLE `statement` (
   `sub_id` int(10) UNSIGNED NOT NULL,
   `us_id` int(11) NOT NULL,
   `data_of_put` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `info_array` varchar(300) NOT NULL,
+  `info_array` text NOT NULL,
   `done` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `subcategories`
+-- Table structure for table `subcategories`
 --
 
 CREATE TABLE `subcategories` (
@@ -155,7 +175,7 @@ CREATE TABLE `subcategories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `subcategories`
+-- Dumping data for table `subcategories`
 --
 
 INSERT INTO `subcategories` (`id`, `name`, `cat_id`, `bajin`) VALUES
@@ -290,7 +310,7 @@ INSERT INTO `subcategories` (`id`, `name`, `cat_id`, `bajin`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `subcat_inputs`
+-- Table structure for table `subcat_inputs`
 --
 
 CREATE TABLE `subcat_inputs` (
@@ -299,7 +319,7 @@ CREATE TABLE `subcat_inputs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `subcat_inputs`
+-- Dumping data for table `subcat_inputs`
 --
 
 INSERT INTO `subcat_inputs` (`sub_id`, `sub_input`) VALUES
@@ -1130,7 +1150,7 @@ INSERT INTO `subcat_inputs` (`sub_id`, `sub_input`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -1141,98 +1161,100 @@ CREATE TABLE `users` (
   `image` varchar(150) NOT NULL,
   `data_of_signup` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `wallet_number` int(6) NOT NULL,
-  `contact_information` varchar(300) NOT NULL,
+  `contact_information` text NOT NULL,
   `location_user` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `user_name`, `password`, `mail`, `image`, `data_of_signup`, `wallet_number`, `contact_information`, `location_user`) VALUES
 (2, 'Alis', '123', 'alisamargaryan12@gmail.com', 'avatar3.png', '2018-07-13 06:01:24', 100002, 'a:4:{s:6:\"number\";s:9:\"055112269\";s:5:\"skype\";s:0:\"\";s:5:\"viber\";s:9:\"055112269\";s:8:\"WhatsApp\";s:0:\"\";}', 'Պռոշյան'),
-(3, 'Ani', 'ani123a', 'ani@mail.ru', 'avatar.png', '2018-07-13 07:50:27', 100003, 'a:4:{s:6:\"number\";s:9:\"055112269\";s:5:\"skype\";s:0:\"\";s:5:\"viber\";s:9:\"055112269\";s:8:\"WhatsApp\";s:0:\"\";}', 'Արաբկիր'),
-(4, 'Aram', '147', 'aram@mail.ru', 'free1.png', '2018-07-13 07:54:47', 100004, 'a:4:{s:6:\"number\";s:9:\"010256970\";s:5:\"skype\";s:0:\"\";s:5:\"viber\";s:9:\"010659710\";s:8:\"WhatsApp\";s:0:\"\";}', 'Ավան');
+(3, 'Ani', 'ani123a', 'ani@mail.ru', '6bdaec9be73689626a9a23ae61b0145d1.jpg', '2018-07-21 13:03:35', 100003, 'a:4:{s:6:\"number\";s:4:\"2412\";s:5:\"skype\";s:4:\"MMMM\";s:5:\"viber\";s:10:\"5251452145\";s:8:\"WhatsApp\";s:7:\"4141414\";}\r\n', 'Արաբկիր'),
+(4, 'Aram', '147', 'aram@mail.ru', 'free1.png', '2018-07-13 07:54:47', 100004, 'a:4:{s:6:\"number\";s:9:\"010256970\";s:5:\"skype\";s:0:\"\";s:5:\"viber\";s:9:\"010659710\";s:8:\"WhatsApp\";s:0:\"\";}', 'Ավան'),
+(5, 'Musho', '555', '777', 'coloriage-de-loup-monstre-loup-coloriage-de-loup-mandala.jpg', '2018-07-21 12:50:32', 100005, 'a:4:{s:6:\"number\";s:4:\"2412\";s:5:\"skype\";s:4:\"MMMM\";s:5:\"viber\";s:10:\"5251452145\";s:8:\"WhatsApp\";s:7:\"4141414\";}', 'Էրեբունի'),
+(6, 'Musho', '1111', 'Musho@mail', 'coloriage-de-loup-monstre-loup-coloriage-de-loup-mandala1.jpg', '2018-07-22 16:25:36', 100006, 'a:4:{s:6:\"number\";s:3:\"110\";s:5:\"skype\";s:7:\"bghjgbv\";s:5:\"viber\";s:8:\"45454165\";s:8:\"WhatsApp\";s:6:\"454521\";}', 'Արաբկիր');
 
 --
--- Индексы сохранённых таблиц
+-- Indexes for dumped tables
 --
 
 --
--- Индексы таблицы `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `image`
+-- Indexes for table `image`
 --
 ALTER TABLE `image`
   ADD PRIMARY KEY (`product_id`);
 
 --
--- Индексы таблицы `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `statement`
+-- Indexes for table `statement`
 --
 ALTER TABLE `statement`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `subcategories`
+-- Indexes for table `subcategories`
 --
 ALTER TABLE `subcategories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT для таблицы `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT для таблицы `image`
+-- AUTO_INCREMENT for table `image`
 --
 ALTER TABLE `image`
   MODIFY `product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT для таблицы `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT для таблицы `statement`
+-- AUTO_INCREMENT for table `statement`
 --
 ALTER TABLE `statement`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT для таблицы `subcategories`
+-- AUTO_INCREMENT for table `subcategories`
 --
 ALTER TABLE `subcategories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
--- AUTO_INCREMENT для таблицы `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

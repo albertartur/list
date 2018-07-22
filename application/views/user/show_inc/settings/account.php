@@ -2,7 +2,7 @@
 			<div class="col-md-9 border-l">
 				<div class="row">
 					<div class="col-md-10">
-						<h4>Փոխել գաղտնաբառը</h4>
+						<h4 id="title">Փոխել գաղտնաբառը</h4>
 						<span>Դուք կարող եք փոխել ձեր գաղտնաբառը, մուտքագրելով հին գաղտնաբառը, այնուհետ մուտքագրելով եւ հաստատելով նոր գաղտնաբառը:</span>
 					</div>
 					<div class="ac_button" class="col-md-2">

@@ -3,8 +3,10 @@
 	margin: 0;
 	text-decoration: none;
 	outline: none;
-	font-size: 13px;
+	font-size: 15px;
+	font-family: 'Times New Roman Special';
 }
+
 /* //------
  */
 .klor{
@@ -53,11 +55,17 @@
     display:none;
 }
 #sub_cat_home{
-    border-left:1px solid grey; 
     position: absolute;
-    top:0px;
-    left: 200px;
-    display:none;
+    top: 0px;
+    left: 271px;
+    width: 214px;
+    background: #fff;
+    z-index: 2;
+    display: none;
+    padding-left: 20px;
+    transition: 1s;
+    min-height: 395px;
+
 }
 .borderdot{
     margin: 20px;
@@ -68,9 +76,9 @@
     padding-right: 10px;
 }
 
-#cat:hover + #sub_cat_home{
+/* #cat:hover + #sub_cat_home{
 	display: block;
-}
+} */
 
 label{
     padding-top: 0;
@@ -135,6 +143,9 @@ label{
 .a-manu1>li>a:hover .a-manu2{
 	display: block;
 }
+a{
+	color: #005EEB;
+}
 a:hover{
 	color: blue;
 	text-decoration: none;
@@ -146,6 +157,7 @@ h2{
 h3,h4{
 	color: #666;
 	padding-bottom: 20px;
+	padding-left: 15px;
 }
 p{
 	padding: 20px;
@@ -189,13 +201,13 @@ textarea{
 	color: black;
 }
 #content{
-	padding-top: 65px;
+	padding-top: 85px;
 	min-height: 88vh;
 }
 
 .main{
 	padding-top: 85px;
-	min-height: 88vh;
+	min-height: 91vh;
 }
 #main_reclame>img{
 	width: 50%;
@@ -203,14 +215,20 @@ textarea{
 #left_manu{
 	background: #fff;
 	text-align: left;
-	padding-left: 10px;
 	padding-bottom: 20px;
 	border-radius: 5px;
 	box-shadow: 0px 0px 5px 2px #ccc;
 	padding-top: 10px;
+	position: relative;
+}
+.l_m{
+	padding-left: 10px;
 }
 #left_reclame>img{
 	width: 100%;
+}
+#left_reclame{
+	padding-top: 30px;
 }
 .content-sm{
 	padding-bottom: 20px;
@@ -308,52 +326,65 @@ input:focus,select:focus{
 	margin-top: 20px;
 	margin-left: 30px;
 }
-#left_manu>ul>li>a{
-	padding-right: 200px;
-}
 .icon-bar{
 	background: blue;
 }
-ul li{
+.li{
 	list-style: none;
 	transition: 1s ease-out;
 	padding-top: 5px;
 	padding-bottom: 5px;
-
+	padding-left: 10px;
+	cursor: pointer;
+	border-top:1px solid;
+	border-bottom: 1px solid;
+	border-left: 1px solid;
+	border-color: transparent;
 }
-ul li a{
-	width: 200px;
-	padding-right: 2px;
-	color: black
+.li:hover{
+	border-color: blue;
+	background: #F4F4F4;
+	color: blue;
 }
-ul li:hover a{
-	text-decoration: none;
-}
-
-ul li:hover ul {
+.li:hover .ulul{
 	display: block;
 }
-ul li ul {
-	transition: 1s ease;
-  position: absolute;
-  left: 269px;
-  top: 0;
-  min-width: 400px;
-  height: 404px;
-  border: 0.5px solid #ccc;
-  background: #fff;
-  display: none;
-  z-index: 1000;
+.li:hover .ulul{
+	display: block;
 }
-ul li ul li { 
-  background: #fff; 
-  display: block; 
+.ulul{
+ 	position: absolute;
+    left: 253px;
+    top: 0;
+    width: 228px;
+    min-height: 454px;
+    z-index: 1;
+    background: #F4F4F4;
+    display: none;
+    box-shadow: 0px 0px 5px 2px #ccc;
 }
-ul li ul li a {
-	display:block !important;
-} 
-ul li ul li:hover {
+.ulul>li{
+	list-style: none;
+	transition: 1s ease-out;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	cursor: pointer;
+	border-top:1px solid;
+	border-bottom: 1px solid;
+	border-right: 1px solid;
+	border-color: transparent;
+}
+.ulul>li:hover{
+	border-color: blue;
 	background: #fff;
+	color: blue;
+}
+#mm li{
+	list-style: none;
+	padding-top: 5px;
+	padding-bottom: 5px;
+
 }
 #user-info{
 	background: #fff;
@@ -409,7 +440,7 @@ ul li ul li:hover {
 	width: 32%;
 	height: 100%;
 	transition: .6s ease-in;
-
+	margin-left: 7px;
 }
 .top_products_grid>a{
 	padding: 100px;
@@ -432,8 +463,8 @@ ul li ul li:hover {
 	display: inline-block;
 	width: 32%;
 	height: 201px;
+	margin-left: 7px;
 	transition: .6s ease-in;
-	border: 1px solid red;
 }
 .ord_products_list{
 	width: 100%;
@@ -447,6 +478,13 @@ ul li ul li:hover {
 }
 .ord_products_grid:hover{
 	background: rgba(0,0,0,0.1);
+}
+.rand_list{
+	transition: 1s;
+}
+.rand_list:hover{
+	background: rgba(62,185,235,0.4);
+	color: black;
 }
 .iconc{
 	width: 20px;
@@ -612,7 +650,26 @@ ul li ul li:hover {
  .td_ads{
  	font-weight: bold;
  }
-
+.help{
+	padding-left: 20px;
+	padding-right: 20px;
+}
+#search_list{
+	width: 214px;
+    min-height: 30px;
+    background: #fff;
+    border: 0.3px solid #ccc;
+    position: absolute;
+    top: 46px;
+    z-index: 1320;
+    left: 355px;
+    padding: 5px;
+    display: none;
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+}
 footer>div{
 	line-height: 6vh;
 }

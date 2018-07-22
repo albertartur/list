@@ -106,6 +106,6 @@ class Admin extends CI_Controller
       // print_r($arr);
       // echo $name;
       $arr=serialize($arr);
-      $this->admin_model->add_to_product($id,$sub_id,$use_id,$data_of_put,$arr,$location,$name,$desc);
+      $this->admin_model->add_to_product($id, $sub_id, $use_id, $data_of_put, $arr, $location, $name, $desc);
   }
 }
