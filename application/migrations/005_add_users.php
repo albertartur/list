@@ -45,8 +45,8 @@ class Migration_add_users extends CI_Migration {
 			         
 			),
 			'contact_information'=>array(
-			         'type' => 'VARCHAR',
-				    'constraint' => '300'
+			         'type' => 'TEXT',
+				    'constraint' => '10000'
 				),
 			'location_user'=>array(
 				'type'=>'VARCHAR',

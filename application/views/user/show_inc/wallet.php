@@ -10,7 +10,7 @@
 Դրամապանակի միջոցով Դուք կարող եք խնայել մեր ծառայությունների արժեքի մինչև 10%:</p>
 			</div>
 			<div class="col-md-8 border-l">
-				<h3>Լիցքավորել դրամապանակը</h3>
+				<h3 id="title">Լիցքավորել դրամապանակը</h3>
 				<input  class="vallet" type="radio" checked="" name="t" id="telcell">
 				<label for="telcell"><img src="<?= base_url('/img/po_telcell.png'); ?>"> </label>
 				<input  class="vallet" type="radio" name="t" id="easypay">

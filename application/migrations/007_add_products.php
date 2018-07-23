@@ -23,7 +23,7 @@ class Migration_add_products extends CI_Migration {
 				
 			),
 			'description'=> array(
-			      'type'=> 'CHAR',
+			      'type'=> 'TEXT',
 			      'unsigned' => TRUE,
 
 			   ),
@@ -38,8 +38,8 @@ class Migration_add_products extends CI_Migration {
 			'data_of_update TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
 			
 			'info_array'=>array(
-			     'type'=>'VARCHAR',
-			     'constraint' => '200'
+			     'type'=>'TEXT',
+			     'constraint' => '50000'
 
 			 ),
 			'us_id'=>array(

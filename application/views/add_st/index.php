@@ -24,23 +24,19 @@
 	<div class="container  content-sm">
 		<div id='mm'>
 		<!-- First three global sections div lev0 -->
-		<div class='col-md-2' id='sec'>
+			<div class='col-md-2' id='sec'>
 
-				<ul style="display: inline;">
-					<li><a href="#" data-id=1 class='a'>Marketplace</a></li>
-					<li><a href="#" data-id=2 class='a'>Services</a></li>
-					<li><a href="#" data-id=3 class='a'>Jobs</a></li>
-				</ul>
+					<ul style="display: inline;">
+						<li><a href="#" data-id=1 class='a'>Marketplace</a></li>
+						<li><a href="#" data-id=2 class='a'>Services</a></li>
+						<li><a href="#" data-id=3 class='a'>Jobs</a></li>
+					</ul>
+			</div>
+					<div class='col-md-3' id='cat'>
+			</div>
+			<!-- First section's categories div lev01 -->
+			
+			<div class='col-md-3' id='sub_cat'></div>			
 		</div>
-				<div class='col-md-3' id='cat'>
-
-		</div>
-		<!-- First section's categories div lev01 -->
-		
-		<div class='col-md-3' id='sub_cat'>
-		</div>
-		
-				
-	</div>
 </div>
 </div>

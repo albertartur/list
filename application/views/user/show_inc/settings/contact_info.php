@@ -45,7 +45,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Կոնտակտային տվյալներ</h4>
+        <h4 class="modal-title" id="title">Կոնտակտային տվյալներ</h4>
         <img src="<?= base_url('img/phone.png'); ?>">
         <img src="<?= base_url('img/skype.png'); ?>">
          <img src="<?= base_url('img/viber.png'); ?>">

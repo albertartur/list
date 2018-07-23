@@ -17,10 +17,10 @@
 				<div>
 				<!--<span> Անվտանգության կոդ</span><input type="text" class="input-sm"> -->
 					<div  class="text-center">
-						<input type="checkbox" name="agree" id="check_reg">
-						<span>
-							Ես համաձայն եմ հայտարարությունների հրապարակման կանոններին, նաև List.am կայքի օգտագործման համաձայնագրին:
-						</span>
+						<input type="checkbox" checked="" name="agree" id="check_reg">
+						<label for="check_reg">
+							Ես համաձայն եմ հայտարարությունների հրապարակման կանոններին, նաև Hayt.com կայքի օգտագործման համաձայնագրին:
+						</label>
 					</div>	
 					<button id="title" class="btn btn-success text-left">Գրանցում</button>
 				</div>

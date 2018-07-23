@@ -1,8 +1,4 @@
-<script type="text/javascript">
-	 var base_url="<?= base_url(); ?>"
-</script>
 
-<script src="<?= base_url('js/js/jquery.min.js'); ?>"></script>
 <script src="<?= base_url('js/js/user_script.js'); ?>"></script>
 
 <a href="<?= base_url('UsersController/logout'); ?>">Logout</a>

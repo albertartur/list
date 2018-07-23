@@ -25,8 +25,8 @@ class Migration_add_statement extends CI_Migration {
 			'data_of_put TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
 			
 			'info_array'=>array(
-			     'type'=>'VARCHAR',
-			     'constraint' => '300'
+			     'type'=>'TEXT',
+			     'constraint' => '50000'
 			 ),
 			'done'=>array(
 				'type'=>'int',

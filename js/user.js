@@ -1,8 +1,6 @@
 $(document).ready(function() {
-	let title = $('#title').text()
-	$('title').html(title);
-	$(' #left_manu>ul>li').append('<span></span>')
-	$(' #left_manu>ul>li>span').addClass('manu_icon');	
+	let title = $('#title').text();
+	$('title').text(title+' Hayt.Com');
 	$( ".vallet" ).change(function() {
 		if ($('#telcell').prop( "checked" )) {
 			$('#wallet-bg').css({
@@ -51,17 +49,18 @@ $('#list').click(function() {
 
 ////////stugi vor klory mug ani
 $('#add_preview').click(function(){
-	// console.log('jgf');
+	
 	let assoc=[];
 	assoc['location']=$( "#id_location option:selected" ).text();
 	assoc['name']=$('#id_title').val();
 	assoc['description']=$('#id_description').val();
 	//let sub_id=base_url.split("/",
 	$(':input').each(function(){
+
 		if(  $(this).attr('id')!='search' && $(this).attr('id')!='id_location' && $(this).attr('id')!='id_title' && $(this).attr('id')!='id_description' && $(this).attr('id')!='client_id')
 		{ 
 			let key=$(this).prop('id').slice(3);
-			if($(this).is('select')){
+		if($(this).is('select')){
 			assoc[key]=$(this).find('option:selected').text();
 		}
 		else if($(this).is('input:text')){
@@ -79,19 +78,21 @@ $('#add_preview').click(function(){
 		}
 		return assoc;
 	})
-	 // console.log(assoc);
-	//let city = $( "#id_location option[value="+x+"]").parents('optgroup').attr('label');
+	let x = $( "#id_location").val();
+	let cond = $('#id_condition').val();
+	let curr = $('#id_currency').val();
+	let city = $( "#id_location option[value="+x+"]").parents('optgroup').attr('label');
 	$('#view_2').css('display','none');
 	$('#view_3').css('display','block');
 	$("#2").removeClass("hov");
 	$('#2').addClass("klor");
 	$("#3").removeClass("klor");
 	$('#3').addClass("hov");
-	//$('#country_ads').html(city +'›'+ assoc['location']).html();
+	$('#country_ads').html(city +'›'+ assoc['location']).html();
 	$('#name_ads').html(assoc['name']);
 	$('#txt_ads').html(assoc['description']);
 	$('#price_ads').html(assoc['price'] +' '+ assoc['currency']).html();
-	//$('#new_ads').html($( "#id_condition option[value="+cond+"]").html());
+	$('#new_ads').html($( "#id_condition option[value="+cond+"]").html());
 	$('#img_ads_d').html($('#list').find('img'));
 	$('#img_ads_d').children('img').attr('class', 'img_zoom');
 	$('#Exchange').html(assoc['type'])
@@ -157,9 +158,9 @@ $(document).on('click', "a.a", function() {
 
 })
 })
-//////////////edit 20/07
+//////////////edit 22/07
 
-$('.h').hover(function(){
+$('.li').change(function(){
 	let linum=$(this).data("id");
 	$.ajax({
 		url:base_url+'add_st/getfrom_cat',
@@ -169,17 +170,21 @@ $('.h').hover(function(){
 		},
 		success:function(d){
 			d=JSON.parse(d);
-			$('#sub_cat_home').empty();
+			/*
 			let ap='<ul>';
 			for (var key in d) {
 				ap+='<li><a href="'+base_url+'category/index/'+d[key]['id']+'">'+d[key]['name']+'</a></li>'
 			}
 			ap+='</ul>';
-			$('#sub_cat_home').append(ap);
-			//$('#sub_cat_home').css('display','block');
+			$('#sub_cat_home').html(ap);*/
+			let ap = '';
+			for (var key in d) {
+				ap += '<li><a href="'+base_url+'category/index/'+d[key]['id']+'">'+d[key]['name']+'</a></li>'
+			}
+			$('.ulul').eq(linum-1).html(ap);
 		}
 	})
-})
+}).change();
 //////////////edit 20/07
 
 
@@ -207,6 +212,7 @@ assoc['location']=$( "#id_location option:selected" ).text();
 	assoc['description']=$('#id_description').val();
 	var url = window.location.pathname.split( '/' );
 	var sub_id=url[url.length-1];
+		alert(url[url.length-1])
 	$(':input').each(function(){
 	if($(this).attr('id')!='search' && $(this).attr('id')!='id_location' && $(this).attr('id')!='id_title' && $(this).attr('id')!='id_description' && $(this).attr('id')!='client_id')
 	{ 
@@ -231,7 +237,7 @@ assoc['location']=$( "#id_location option:selected" ).text();
 	})
 /////////////////20/07
 let arr_to_str=JSON.stringify(assoc);
-console.log(assoc.location);
+console.log(arr_to_str);
 console.log((assoc));
    $.ajax({
       url:base_url+'add_st/add_statement',
@@ -294,26 +300,84 @@ console.log((assoc));
 		$('#top_img').attr('src', iii.eq(next_prev_click).attr('src'));
 	});
 
+/////////////////////////////////////////////
+	$('#sea_ads').change(function () {
+		$(".ord_products").children('div').css('display', 'inline-block');
+	    var str = '';
 
-	function handleFileSelect(evt) {
-	    var files = evt.target.files; 
-	    for (var i = 0, f; f = files[i]; i++) {
-	      if (!f.type.match('image.*')) {
-	        continue;
-	      }
-	      var reader = new FileReader();
-	      reader.onload = (function(theFile) {
-	        return function(e) {
-	          var span = document.createElement('span');
-	          span.innerHTML = ['<img class="thumb" src="', e.target.result,
-	                            '" title="', escape(theFile.name), '"/>'].join('');
-	          document.getElementById('list').insertBefore(span, null);
-	        };
-	      })(f);
-	      reader.readAsDataURL(f);
-	    }
-	  }
-	 document.getElementById('id_photos').addEventListener('change', handleFileSelect, false);
+	    $( ".menu_check:checked" ).each(function() {
+	    	str += $( this ).attr('id'); 
+	    	$(this).click(function() {
+	    		location.reload();
+	    	});
+	    });
 
+	    $(".ord_products").children('div').each(function() {
+			if (!$(this).hasClass(str)) {
+	    	$(this).css('display', 'none');
+	    	}  
+		});
+	})
+
+
+	$('#photos').change(function () {
+	    $( "#img_load:checked" ).each(function() {
+	    	$(this).click(function() {
+	    		location.reload();
+	    	});
+	    });
+	    
+	   	$(".ord_products").children('div').each(function() {
+			if (!$(this).find('img').hasClass('ob_img_ads')) {
+	    		$(this).css('display', 'none');
+	    	}  
+		});
+	})
+
+
+	$('#search_price').click(function() {
+		let sks = +($('#search_price_1').val());
+		let verj = +($('#search_price_n').val());
+		let cur_val = $('#currency').val();
+
+		$(".ord_products").children('div').each(function() {
+			let p = +$(this).find('.price').text();
+			let currency = $(this).find('.currency').text();
+			
+	  		if(p>=sks && p<=verj){
+	  			$(this).css('display','inline-block');
+	  		}
+	  		else{
+	  			$(this).css('display','none');
+	  		}
+		});
+	});
+
+
+	$("#search").on("input", function(e) {
+	 	let search = $(e.target).val();
+	 	$.ajax({
+		    url:base_url+'category/search',
+		    method:'post',
+		    data:{search:search},
+		    success:function(elem){
+		    	$('#search_list').css('display', 'none');
+		    	if(elem.length > 2) {
+		    		let content = JSON.parse(elem);
+	      	 		let sea = '';
+	      	 		for(let i = 0; i < content.length; i++){
+	      	 			sea += '<a href="'+base_url+'category/ads/'+content[i][1]+'">'+content[i][0]+'</a><br>';
+	      	 		}
+	      	 		$('#search_list').css('display', 'block');
+	      	 		$('#search_list').html(sea)
+		    	}
+	     	}
+	   })
+
+	});
+
+	
+////////////////////////////////////////////
 
 });
+

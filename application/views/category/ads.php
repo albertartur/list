@@ -1,6 +1,32 @@
 
 
+<?php 
+  foreach ($all as $val) {
+    $info = unserialize($val['info_array']);
+    $name = $val['name'];
+    $location = $val['location'];
 
+    if (isset($info['photos'])) {     
+        $images = $info['photos'];
+    }
+
+    $description =  $val['description'];
+    $id = $val['id'];
+    $data_of_put = $val['data_of_put'];
+    $data_of_update = $val['data_of_update'];
+    
+    if (intval($val['sub_id']) < 103) {
+        $currency = $info['currency'];
+      	$type = $info['type'];
+    	$price = $info['price'];
+    }
+    else{
+    	$currency = '';
+    	$type = '';
+    	$price = '';
+    }
+  }
+ ?>
 <div id="content" class="container">
   <div class="container"> 
     <ol class="breadcrumb col-md-10">
@@ -10,110 +36,65 @@
     </ol>
   </div>
   <div class="col-md-9" id="main_content_ads">
-    <h2>Name ads</h2>
+    <h2 id="title"><?= $name; ?></h2>
     <div>
-      <span>price 360,000 ֏ </span> <span class="glyphicon glyphicon-globe">Երևան › Աջափնյակ</span>  
+      <span><?= $price.' '.$currency; ?> </span><span id="Exchange"><?= $type; ?> </span> <span class="glyphicon glyphicon-globe"><?= $location; ?></span>  
     </div>
 
-        <div id="img_ads">
-          <img id="top_img" src=""> 
-          <div class="text-center">
-            <img id="prev" src="<?= base_url('img/prev.png'); ?>">
-            <img class="zoom_img"  data-toggle="modal" data-target="#zoom_img" src="<?= base_url('img/zoom.png'); ?>"> 
-             <img id="next" src="<?= base_url('img/next.png'); ?>">
-          </div>
-        </div>
-        <div id="iiii">
-          <img class="img_next" src="<?= base_url('img/h.jpg'); ?>">
-          <img class="img_next" src="<?= base_url('img/r.jpg'); ?>">
-          <img class="img_next" src="<?= base_url('img/e.jpg'); ?>">
-          <img class="img_next" src="<?= base_url('img/k.jpg'); ?>">
-          <img class="img_next" src="<?= base_url('img/j.jpg'); ?>">
-        </div>
-    <div>
-      <span>Վիճակ</span>
-      <h4>Նոր</h4>
+         <?php 
+         $images[0] = 'uploads/coloriage-de-loup-monstre-loup-coloriage-de-loup-mandala.jpg';
+            if (!empty($images) && intval($val['sub_id']) < 127) {
+             echo  "<div id='img_ads'>
+                                  <img id='top_img' src=''> 
+                                  <div class='text-center'>
+                                    <img id='prev' src='".base_url('img/prev.png')."'>
+                                    <img class='zoom_img'  data-toggle='modal' data-target='#zoom_img' src='".base_url('img/zoom.png')."'> 
+                                     <img id='next' src='".base_url('img/next.png')."'>
+                                  </div>
+                                </div><div id='iiii'>";
+                for ($i=0; $i < count($images); $i++) { 
+
+                    echo "<img class='img_next' src='".base_url($images[$i])."'>";
+                }
+               echo  '</div>';
+            }
+        ?>
+   <div class="row" id='info'>
+         <table>
+                <?php
+                    echo '<tr>';
+                    foreach ($info as $key => $value) {
+                        if($key!='photos' && $key!='location' && $key!='name' && $key!='description' && $key!='price' && $key!='currency' && $key!='type'){
+                            echo '<td>'.$key.'</td>';
+                        }
+                    }
+                    echo '</tr><tr>';
+                    foreach ($info as $key => $value) {
+                        if($key!='photos' && $key!='location' && $key!='name' && $key!='description' && $key!='price' && $key!='currency' && $key!='type'){
+                            echo '<td class="td_ads">'.$value.'</td>';
+                        }
+                    }
+                    echo '</tr>';
+                ?>
+         </table>     
     </div>
-
-
-    <!-- if bnakarannaaa
-         -->    <div class="row">
-                    <div class="col-md-3">
-                        <span>Շինության տիպը</span>
-                        <p class="text-b">11</p>
-                    </div>
-                    <div class="col-md-2">
-                        <span>Սենյակներ</span>
-                         <p class="text-b">11</p>
-                    </div>
-                    <div class="col-md-2">
-                        <span>Մակերես</span>
-                         <p class="text-b">11</p>
-                    </div>
-                    <div class="col-md-2">
-                        <span>Հարկ Հարկը</span>
-                         <p class="text-b">11</p>
-                    </div>
-                    <div class="col-md-3">
-                        <span>Հարկերի քանակ</span>
-                         <p class="text-b">11</p>
-                    </div>
-                </div>
-
-
-
-           <!-- if(car) -->
-            <div id="car_info" class="row">
-              <div class="col-md-6">
-                <div>
-                  <div class="col-md-6 text-left">Տեսակ</div>
-                  <div class="col-md-6 text-right">-</div>
-                </div>
-                <div>
-                  <div class="col-md-6 text-left">Տարի</div>
-                  <div class="col-md-6 text-right">- </div>
-                </div>
-                <div>
-                  <div class="col-md-6 text-left">Շարժիչ</div>
-                  <div class="col-md-6 text-right">- </div>
-                </div>
-                <div>
-                  <div class="col-md-6 text-left">Ղեկ</div>
-                  <div class="col-md-6 text-right">- </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div>
-                  <div class="col-md-6 text-left">Մոդել</div>
-                  <div class="col-md-6 text-right">-  </div>
-                </div>
-                <div>
-                  <div class="col-md-6 text-left">Վազքը</div>
-                  <div class="col-md-6 text-right">- </div>
-                </div>
-                <div>
-                  <div class="col-md-6 text-left">Փոխանցման տուփը</div>
-                  <div class="col-md-6 text-right">- </div>
-                </div>
-                <div>
-                  <div class="col-md-6 text-left">Մաքսազերծված է</div>
-                  <div class="col-md-6 text-right">- </div>
-                </div>
-              </div>
-            </div>
             <div class="border"></div>
-    <div class="txt-ad">TXT Շատ հարմար գին ու շատ բարձր որակ, միայն մեզ մոտ ննջասենյակի կահույքի հավաքածուների մեծ տեսականի
-      գունային տարբերակների առկայություն
-      ապառիկ առանց կանխավճարի
-      առաքում Երևանում անվճար</div>
-    <span class="date_ads">Հայտարարության համարը: 7471954</span><span class="date_ads"> Ամսաթիվ: 22.04.2017 </span><span class="date_ads"> Թարմացվել է: 11.07.2018</span>
+    <div class="txt-ad"><?= $description; ?></div>
+    <span class="date_ads">Հայտարարության համարը: <?= $id; ?></span><span class="date_ads"> Ամսաթիվ: <?= $data_of_put; ?> </span><span class="date_ads"> Թարմացվել է:<?= $data_of_update; ?></span>
 
   </div>
   <div class="col-md-3 border-l" id="right_content_ads">
     <div class="text-center">
-      <img width="54px;" src="<?= base_url('img/avatar.png'); ?>">
-      <p><a href="">User  Name</a></p>
-      <p>List.am-ում է` 23.02.2017</p>
+        <?php 
+            if (empty($user['image'])) {
+                $user_img = 'img/avatar.png';
+            }
+            else{
+                $user_img = 'uploads/'.$user['image'];
+            }
+        ?>
+      <img width="54px;" src="<?= base_url($user_img); ?>">
+      <p><a href=""><?= $user['user_name']; ?></a></p>
       <button class="btn btn-primary"  data-toggle="modal" data-target="#mytel">Զանգահարել</button>
       <div class="border"></div>
       <button type="button" class="btn-a" data-toggle="modal" data-target="#mymsg">ՈՒղարկել նամակ</button>
@@ -135,10 +116,28 @@
         <div class="border"></div>
         <div>
           <div>Նմանատիպ հայտարարություններ</div>
-          <div>1</div>
-          <div>2</div>
-          <div>3</div>
-          <div>4</div>
+          <?php
+            foreach ($rand as $v) {
+                 if (intval($v['sub_id']) < 103) {
+                     $info = unserialize($v['info_array']);
+                     if (!empty($info['photos'][0])) {
+                        $img = 'ob_img_ads';
+                        $img_url = $info['photos'][0];
+                    }
+                     else{
+                        $img = '';
+                        $img_url = 'img/noimage.jpg';
+                    }
+                    echo "<div class = 'rand_list ".$info['type']."'>
+                            <div class='img_list'>
+                                <a href='".base_url('category/ads/'.$v['id'])."'><img class='".$img."' src='".base_url($img_url)."'></a>
+                            </div>
+                            <div class='name_list'><a href='".base_url('category/ads/'.$v['id'])."'> ".$v['name']."</a></div>
+                                <div class='price'>".$info['price']."</div>
+                            </div>";
+                }
+            }
+          ?>
         </div>
 
     </div>
@@ -155,7 +154,8 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">ՈՒղարկել նամակ</h4>
       </div>
-      <p>username</p>
+       <h3> <?= $user['user_name']; ?></h3>
+      <img width="150px;" src="<?= base_url($user_img); ?>">
       <div class="border"></div>
       <div class="modal-body">
         <p>Ձեր հաղորդագրությունը</p>
@@ -193,11 +193,17 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Զանգահարել</h4>
       </div>
-      <p>username</p>
+      <h3> <?= $user['user_name']; ?></h3>
+      <img width="200px;" src="<?= base_url($user_img); ?>">
       <div class="border"></div>
       <div class="modal-body text-center">
-        <h3><a href="tel:+37455555555">+37455555555</a></h3>
-        <div class="border"></div>
+        <?php
+            $contact = unserialize($user['contact_information']);
+                foreach ($contact as $k => $cont) {
+                   echo "<div class='row text-center border'> <div class='col-md-6'><h4> $k</h4></div><div class='col-md-6'> <h4>$cont</h4></div></div>";
+                }
+         ?>
+
         <div class="text-center">
           <p>Խնդիրներ ունեք հայտարարության հետ կապված:
 Տեղյակ պահեք մեզ:</p>         
