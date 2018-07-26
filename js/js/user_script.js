@@ -86,6 +86,55 @@ $('#delete_my_profil').on('click',function(){
  });
 
 
+ //statement deletes
+$('.del').on('click',function(){
+   
+    var product_id  = $(this).attr('id');
+
+    $(this).parent().parent().parent().remove();
+    
+        $.ajax({
+         type: 'post',
+         url:  base_url+'/UsersController/statement_delete',
+         data: {product_id:product_id},
+         success: function(data)
+         {
+          alert(data);
+          
+         }
+    });
+ });
+
+
+
+ $('.edit').on('click',function(){
+   
+    var product_id  = $(this).attr('id');
+    var currentdate = new Date(); 
+   
+   var datetime =  currentdate.getFullYear() + "-"
+   + (currentdate.getMonth()+1)  + "-" 
+   + currentdate.getDate() + " "  
+   + currentdate.getHours() + ":"  
+   + currentdate.getMinutes() + ":" 
+   + currentdate.getSeconds();
+
+    
+        $.ajax({
+         type: 'post',
+         url:  base_url+'/UsersController/statement_edit',
+         data: {product_id:product_id,datetime:datetime},
+         success: function(data)
+         {
+          alert(data);
+          
+         }
+    });
+ });
+
+
+
+
 
 
 

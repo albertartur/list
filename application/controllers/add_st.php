@@ -32,6 +32,7 @@ class Add_st extends CI_Controller {
 		$id = $this->user_id();
 		$arr1['user'] = $this->UsersModel->get_my_user_ads($id);
 		$arr1['my_ads'] = $this->UsersModel->get_my_ads($id);
+		$arr1['way']=$this->UsersModel->get_way($x);
 		$this->load->view('header');
 		$this->load->view("add_st/add",$arr1);
 		$this->load->view('footer');
@@ -47,27 +48,25 @@ class Add_st extends CI_Controller {
 		$data['all']=$this->UsersModel->get_subcats($cat_id);
 		print_r( json_encode($data['all']));
 	}
+
 	public function add_statement(){
-		$sub_id=$this->input->post('sub_id');
-	 	$arr=$this->input->post('assoc');
-	 	$arr_serializ=serialize($arr);
+		$sub_id=$this->input->post('sub');
+	 	$arr1=$this->input->post('arr');	
+	 	$aa = json_decode($arr1);
+       		for ($i=0; $i < count($_FILES); $i++) {
+	       		if(isset($_FILES["file$i"])){
+				$img=$_FILES["file$i"];
+				$image=$img['name'];
+				move_uploaded_file($img['tmp_name'],"./uploads/".$image);
+      				 array_push($aa->photos, $image);
+				}
+       		}
+/*		print_r($aa->photos); 	
+*/	 	$bb = json_encode($aa);
+	 	$arr_serializ=serialize($bb);
 	 	$user_id = $this->user_id();
-	 	// $loc=$this->input->post('loc');
-	 	// $title=$this->input->post('title');
-	 	// $desc=$this->input->post('desc');
-		 //print_r(json_decode($arr, true));
-		 //echo $arr_serializ;
-		// echo $sub_id;
-	 $this->UsersModel->add_statement($sub_id, $arr_serializ, $user_id);
 
+		$this->UsersModel->add_statement($sub_id, $arr_serializ, $user_id);
+	
 	}
-	// public function get_inp($x){
-	// 	$data['inputs']=$this->UsersModel->get_inputs($x);
-	// 	foreach ($data['inputs'] as $key => $value) {
-	// 		$arr['inputs'][]=$data['inputs'][$key]['sub_input'];
-	// 	}
-	// 	//print_r( json_encode($arr));
-	// 	echo ($arr['inputs'][0]);
-	// }
-
 }

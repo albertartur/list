@@ -1,3 +1,4 @@
+<?php if($this->session->userdata('admin_session') ){ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,7 @@
 <script src="<?=base_url('js/script.js')?>"></script>
 </head>
 <body>
+	<a href="<?=base_url("admin/Admin/logout")?>"><input type="button" value="Logout" style="margin-left: 89%;"></a><br>
 	<?php  $a=explode('/',$_SERVER['REQUEST_URI']);
 	$cat_id=$a[count($a)-1];
 	// print_r( $parts);
@@ -54,3 +56,10 @@
 	</table>
 </body>
 </html>
+
+
+<?php }
+else{
+  redirect(base_url('admin/login'));
+}
+ ?>

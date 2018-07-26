@@ -1,5 +1,5 @@
 
-<script src="<?= base_url('js/js/user_script.js'); ?>"></script>
+
 
 <a href="<?= base_url('UsersController/logout'); ?>">Logout</a>
 <?php if($this->session->userdata('my_session') ){ ?>

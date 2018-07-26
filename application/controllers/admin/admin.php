@@ -19,12 +19,23 @@ class Admin extends CI_Controller
    	 $log=$this->input->post('login');
    	 $pass=$this->input->post('password');///create an object of admin_model name is admin_model
      if($this->admin_model->check_admin($pass,$log)){
+
+            $session_data_admin =  array('admin_session'=>$log);
+            $this->session->set_userdata($session_data_admin);
+
     	redirect (base_url('admin/home'));///its go to home method of admin class
      }
     else {
      	redirect('admin/Admin/index');
     }
    }
+   
+   public function logout()
+    {
+        $this->session->unset_userdata('admin_session');
+        redirect(base_url('admin/login'));
+    }
+
    public function home(){
    	$data['all']=$this->admin_model->get_categories();
      $this->load->view('admin/home',$data);

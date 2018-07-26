@@ -1,3 +1,4 @@
+<?php if($this->session->userdata('admin_session') ){ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,7 @@
     <script src="<?=base_url('js/script.js')?>"></script>
 </head>
 <body>
+    <a href="<?=base_url("admin/Admin/logout")?>"><input type="button" value="Logout" style="margin-left: 89%;"></a><br>
 	<?php 
 	 $arr=explode('/', $_SERVER['REQUEST_URI']);
 	 $sub_id=$arr[count($arr)-1];
@@ -76,3 +78,9 @@
     </table>
 </body>
 </html>
+
+<?php }
+else{
+  redirect(base_url('admin/login'));
+}
+ ?>

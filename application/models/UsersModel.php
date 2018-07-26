@@ -4,25 +4,97 @@ class UsersModel extends CI_Model
   
 
   public function check_model($email,$password){
-   $query = $this->db->get_where('users', array('mail' => $email,'password'=>$password));
-   if($query->num_rows()>0){
-    return true;     
-   }
-    return false;
+  
+    $query = $this->db->query("select * from  users where ( user_name='$email' OR mail = '$email') and password=md5('".$password."')");
+
+      if($query->num_rows()>0)
+      {
+      return true;     
+      }
+      return false;
   }
 
   
-  public function reset_password($email,$security_code)
+  public function reset_password($email,$security_code,$action)
   {
-          $this->db->set('password', $security_code);
-          $this->db->where('mail', $email);
-          $this->db->update('users');
+     
+
+       
+
+        $query = $this->db->query("select * from users  where mail='$email'");
+        $row = $query->row_array();
+        $check_email = $row['mail'];
+                  
+        if(!empty($email) && $check_email ==  $email)
+        {
+          $data = array('password' => md5($security_code));
+          $query = $this->db->update('users',$data,array('mail'=>$email));
+          if($this->db->affected_rows())
+        {
+          echo '<script language="javascript">alert("Ձեր կատարած փոփոխությունը կատարված է։")</script>';
+
+          // Send password Email
+          $from_email = "aramghazaryan2@gmail.com"; 
+          $to_email = $email; 
+   
+         //Load email library 
+         $this->load->library('email'); 
+   
+         $this->email->from($from_email, $from_email); 
+         $this->email->to($to_email);
+         $this->email->subject('Գաղտնաբառի վերականգնում'); 
+         $this->email->message('Հարգելի "'.$email.'" ձեր նոր Գաղտնաբառն է '.$security_code); 
+   
+         //Send mail 
+         if($this->email->send()) 
+
+           echo '<script language="javascript">alert("Շնորհակալություն ձեր Գաղտնաբառն ուղարկվել է ձեր էլ․ փոստին։")</script>';
+           else 
+           echo '<script language="javascript">alert("Խնդրում ենք ճիշտ մուտքագրեք ձեր էլ․ փոստի հասցեն։")</script>';
+        }
+
+        else
+        {
+          echo '<script language="javascript">alert("Խնդրում ենք ճիշտ մուտքագրեք ձեր հին Էլ․ փոստը։")</script>';
+        } 
+
+        }
+
+        else
+        {   
+            $this->load->view('user/reset_password');
+            echo "<style>#ok{border-color: coral;}</style>";
+        }
+        
+      
   }
 
     //register_model
   public function register_model($email,$password)
   {
-       $this->db->query("insert into users(mail,password) values('$email','$password')");
+
+       $this->db->query("insert into users(mail,password) values('$email',md5('".$password."'))");
+
+       // echo '<script language="javascript">alert("Ձեր կատարած փոփոխությունը կատարված է։")</script>';
+
+       //    // Send password Email
+       //    $from_email = "aramghazaryan2@gmail.com"; 
+       //    $to_email = $email; 
+   
+       //   //Load email library 
+       //   $this->load->library('email'); 
+   
+       //   $this->email->from($from_email, 'Aram'); 
+       //   $this->email->to($to_email);
+       //   $this->email->subject('Գաղտնաբառի վերականգնում'); 
+       //   $this->email->message('Հարգելի Արամ ձեր նոր Գաղտնաբառն է '.$password); 
+   
+       //   //Send mail 
+       //   if($this->email->send()) 
+
+       //     echo '<script language="javascript">alert("Շնորհակալություն ձեր Գաղտնաբառն ուղարկվել է ձեր էլ․ փոստին։")</script>';
+       //     else 
+       //     echo '<script language="javascript">alert("Խնդրում ենք ճիշտ մուտքագրեք ձեր էլ․ փոստի հասցեն։")</script>';
   }
 
 
@@ -74,28 +146,72 @@ class UsersModel extends CI_Model
    // edit_password_model
    public function edit_password_model($old_password,$new_password,$user_id)
    {
-       $data = array('password' => $new_password);
-       $query = $this->db->update('users',$data,array('id'=>$user_id,'password'=>$old_password));
+       $data = array('password' => md5($new_password));
+       $query = $this->db->update('users',$data,array('id'=>$user_id,'password'=>md5($old_password)));
+       
         if($this->db->affected_rows())
         {
-          echo 'Dzer popoxutyun@ katarvace';
-        }
-        else{echo 'Xndrum enq chisht mutqagreq dzer hin gaxtanabr@';}    
+          echo 'Ձեր կատարած փոփոխությունը կատարված է։';
 
+          // Send password Email
+          $from_email = "aramghazaryan2@gmail.com"; 
+          $to_email = $this->session->userdata('my_session'); 
+   
+         //Load email library 
+         $this->load->library('email'); 
+   
+         $this->email->from($from_email, $from_email); 
+         $this->email->to($to_email);
+         $this->email->subject('Գաղտնաբառի վերականգնում'); 
+         $this->email->message('Հարգելի "'.$this->session->userdata('my_session').'" ձեր նոր Գաղտնաբառն է '.$new_password); 
+   
+         //Send mail 
+         if($this->email->send()) 
+
+           echo '<script language="javascript">alert("Շնորհակալություն ձեր Գաղտնաբառն ուղարկվել է ձեր էլ․ փոստին։")</script>';
+           else 
+           echo '<script language="javascript">alert("Խնդրում ենք ճիշտ մուտքագրեք ձեր էլ․ փոստի հասցեն։")</script>';
+        }
+
+        else
+        {
+          echo 'Խնդրում ենք ճիշտ մուտքագրեք ձեր հին գաղտնաբառը։';
+        }    
    }
    
-   // edit email
+    // edit email
    public function edit_email_model($new_email,$password,$user_id)
    {
        $data = array('mail' => $new_email);
-       $query = $this->db->update('users',$data,array('id'=>$user_id,'password'=>$password));
+       $query = $this->db->update('users',$data,array('id'=>$user_id,'password'=>md5($password)));
         if($this->db->affected_rows())
         {
-          echo 'Dzer popoxutyun@ katarvace';
+          echo 'Ձեր կատարած փոփոխությունը կատարված է։';
+
+          // Send password Email
+          $from_email = "aramghazaryan2@gmail.com"; 
+          $to_email = $new_email; 
+   
+         //Load email library 
+         $this->load->library('email'); 
+   
+         $this->email->from($from_email, $from_email); 
+         $this->email->to($to_email);
+         $this->email->subject('Գաղտնաբառի վերականգնում'); 
+         $this->email->message('Հարգելի "'.$this->session->userdata('my_session').'" ձեր հարցումը կատարված է։ '); 
+   
+         //Send mail 
+         if($this->email->send()) 
+
+           echo '<script language="javascript">alert("Շնորհակալություն ձեր Գաղտնաբառն ուղարկվել է ձեր էլ․ փոստին։")</script>';
+           else 
+           echo '<script language="javascript">alert("Խնդրում ենք ճիշտ մուտքագրեք ձեր էլ․ փոստի հասցեն։")</script>';
         }
-        else{
-          echo 'Xndrum enq chisht mutqagreq dzer  gaxtanabr@';}   
-   }
+
+        else
+        {
+          echo 'Խնդրում ենք ճիշտ մուտքագրեք ձեր գաղտնաբառը։';}    
+        }
 
 
    public function delete_my_profil_model($password,$user_id)
@@ -104,16 +220,51 @@ class UsersModel extends CI_Model
      $delete = $this->db->query("delete from users where id='$user_id' && password='$password' ");
    
   
-     if ($this->db->affected_rows() > 0) {
-          // redirect(base_url('UsersController/logout'));
-      echo 'your profil is deleteed';
-        }
+     if ($this->db->affected_rows() > 0)
+      {
+        echo 'Ձեր պրոֆիլը հեռացված է։';
+      }
 
-      else{
-          echo 'Xndrum enq chisht mutqagreq dzer  gaxtanabr@';
+      else
+      {
+        echo 'Խնդրում ենք ճիշտ մուտքագրեք ձեր գաղտնաբառը։';
       }
        
-    }     
+    }   
+
+
+   public function show_model($user_id)
+   {
+      $query = $this->db->query("select * from products where us_id='$user_id' ");
+      return  $query->result_array(); 
+   }
+
+
+  //statement delete
+  public function statement_delete_model($product_id)
+  {
+    $delete = $this->db->query("delete from products where   id='$product_id' ");
+  }
+
+  
+  //  statement_edit_model
+  public function statement_edit_model($product_id,$datetime)
+  {
+       $data = array('data_of_update' => $datetime);
+       $query = $this->db->update('products',$data,array('id'=>$product_id));
+        
+        if($this->db->affected_rows())
+        {
+          echo 'Dzer popoxutyun@ katarvace';
+        }
+        else{
+          echo 'Xndrum enq chisht mutqagreq dzer  gaxtanabr@';}   
+  }
+
+
+
+
+
     public function get_cats($sec_id){
       $query=$this->db->get_where('categories',array('glob'=>$sec_id))->result_array();
       return $query;
@@ -171,7 +322,7 @@ class UsersModel extends CI_Model
     }
     public function get_my_ads($id){
         if ($id) {   
-            $query = $this->db->get_where('products',array('us_id'=>$id),4)->result_array();
+            $query = $this->db->get_where('products',array('us_id'=>$id),2)->result_array();
             return $query;
         }
         else{
@@ -186,6 +337,23 @@ class UsersModel extends CI_Model
     public function get_top_pro($id){
         $query=$this->db->get_where('products',array('sub_id'=>$id),3)->result_array();
         return $query;
+    }
+    public function get_thiscat($id){
+        $this->db->select('cat_id');
+        $cat_id=$this->db->get_where('subcategories',array('id'=>$id))->row();
+         $query=$this->db->get_where('subcategories',array('cat_id'=>$cat_id->cat_id))->result_array();
+        return $query;
+    }
+    //////////////////////////////////////////////////////
+     public function get_way($sub_id){
+        $this->db->select('cat_id,name');
+        $sub=$this->db->get_where('subcategories',array('id'=>$sub_id))->result_array();
+        $arr['sub']=$sub[0]['name'];
+        $this->db->select('glob,name');
+        $cat=$this->db->get_where('categories',array('id'=>$sub[0]['cat_id']))->result_array();
+        $arr['cat']=$cat[0]['name'];
+        $arr['sec']=$cat[0]['glob'];
+        return $arr;
     }
 
 }

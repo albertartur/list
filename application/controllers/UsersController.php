@@ -1,4 +1,8 @@
 <?php
+use \Stripe\Stripe;
+use \Stripe\Charge;
+use \Stripe\Customer;
+
 
 class UsersController extends CI_Controller
 {
@@ -29,8 +33,8 @@ public function index()
 
 	public function check()
     {
-		$email    = $this->input->post('email');
-		$password = $this->input->post('password');
+        $email    = trim($this->input->post('email')," ");
+        $password = $this->input->post('password');
         $remember = $this->input->post('remember');
         
 
@@ -65,11 +69,12 @@ public function index()
 
 
 
-	public function show()
-	{
-		 $this->load->view('user/show');
-		 $this->user_id();
-	}
+    public function show()
+    {
+         $user_id = $this->user_id();
+         $data['check'] = $this->UsersModel->show_model($user_id);
+         $this->load->view('user/show',$data);
+    }
 
 
 
@@ -83,26 +88,16 @@ public function index()
  
 
 
-	public function reset_password()
-	{
-	    $email         = $this->input->post('email');
-	    $security_code = $this->security_code();	
+    public function reset_password()
+  {
+      $email         = $this->input->post('email');
+      $security_code = $this->security_code();  
+        $action        = $this->input->post('reset_password');
 
-        $query = $this->db->query("select * from users  where mail='$email'");
-        $row = $query->row_array();
-        $check_email = $row['mail'];
-        if(!empty($email) && $check_email ==  $email)
-        {
-        	$this->UsersModel->reset_password($email,$security_code);
-        	$this->load->view('user/login');	
-        }
-
-        else
-        {
-            $this->load->view('user/reset_password');	
-        }
-
-	}
+        $this->UsersModel->reset_password($email,$security_code,$action);
+        $this->load->view('user/login');  
+  }
+  
 
 
 	public function register()
@@ -251,5 +246,61 @@ public function index()
     	}
     }
 
- 
+    
+    // Payment system
+    public function payment_system()
+   {
+       
+
+        if(isset($_POST['stripeToken']))
+        {
+        $token = $_POST['stripeToken'];
+        try
+       {
+           require_once('vendor/autoload.php'); 
+           \Stripe\Stripe::setApiKey('sk_test_suTr3x4d9rz6Aghdq9BlEG6L');
+         
+           $charge = Charge::create(
+           
+           array(   'amount' => 10000,
+                    'currency' => 'usd',
+                    'description' => 'Example charge',
+                    'source' => $token,
+               ));
+
+           echo "<script> alert('Շնորհակալություն ձեր գործարքը կատարված է։');window.location.href='http://list.test/UsersController/show?my_profil=Հայտարարություններ';</script>";
+       }
+
+           catch (\Stripe\Error\Card $e)
+      {
+           $error = $e->getMessage();
+           echo $error;
+      }
+   
+   }
+ }
+
+
+   //statement delete
+   public function statement_delete()
+   {
+      $user_id  = $this->user_id();
+      $product_id = $this->input->post('product_id');
+
+      $this->UsersModel->statement_delete_model($product_id);
+   }
+
+   public function statement_edit()
+   {
+      
+         $product_id   = $this->input->post('product_id');
+         $datetime   = $this->input->post('datetime');
+         
+            $this->UsersModel->statement_edit_model($product_id,$datetime);
+        
+   }
+
+
+
+  
 }

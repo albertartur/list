@@ -1,3 +1,5 @@
+<?php if($this->session->userdata('admin_session') ){ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +10,8 @@
 <script src="<?=base_url('js/script.js')?>"></script>
 </head>
 <body>
+	<a href="<?=base_url("admin/Admin/logout")?>"><input type="button" value="Logout" style="margin-left: 89%;"></a>
+
 	<h1>Welcome to Admin page</h1>
 	<a href="<?=base_url("admin/Admin/show_wait_statement")?>"><input type="button" value="Show_wait_statement" style="margin-left: 89%;"></a>
 	<br>
@@ -38,3 +42,9 @@
 	</table>
 </body>
 </html>
+
+<?php }
+else{
+  redirect(base_url('admin/login'));
+}
+ ?>

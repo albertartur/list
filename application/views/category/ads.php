@@ -17,8 +17,14 @@
     
     if (intval($val['sub_id']) < 103) {
         $currency = $info['currency'];
+        if (isset($info['typemin'])) {
+         $type = $info['typemin'];
+        }
+        else{
+
       	$type = $info['type'];
-    	$price = $info['price'];
+        }
+    	 $price = $info['price'];
     }
     else{
     	$currency = '';
@@ -28,13 +34,6 @@
   }
  ?>
 <div id="content" class="container">
-  <div class="container"> 
-    <ol class="breadcrumb col-md-10">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Library</a></li>
-      <li class="active">Data</li>
-    </ol>
-  </div>
   <div class="col-md-9" id="main_content_ads">
     <h2 id="title"><?= $name; ?></h2>
     <div>
@@ -42,8 +41,7 @@
     </div>
 
          <?php 
-         $images[0] = 'uploads/coloriage-de-loup-monstre-loup-coloriage-de-loup-mandala.jpg';
-            if (!empty($images) && intval($val['sub_id']) < 127) {
+            if (!empty($images[0]) && intval($val['sub_id']) < 127) {
              echo  "<div id='img_ads'>
                                   <img id='top_img' src=''> 
                                   <div class='text-center'>
@@ -52,10 +50,10 @@
                                      <img id='next' src='".base_url('img/next.png')."'>
                                   </div>
                                 </div><div id='iiii'>";
-                for ($i=0; $i < count($images); $i++) { 
+                 for ($i=0; $i < count($images); $i++) { 
 
-                    echo "<img class='img_next' src='".base_url($images[$i])."'>";
-                }
+                    echo "<img class='img_next' src='".base_url('./uploads/'.$images[$i])."'>";
+                 }
                echo  '</div>';
             }
         ?>
@@ -119,18 +117,21 @@
           <?php
             foreach ($rand as $v) {
                  if (intval($v['sub_id']) < 103) {
-                     $info = unserialize($v['info_array']);
-                     if (!empty($info['photos'][0])) {
+                     $infoleft = unserialize($v['info_array']);
+                      if (isset( $infoleft['photos'])) {     
+                          $images1 = $infoleft['photos'][0];
+                      }
+                     if (!empty($images1)) {
                         $img = 'ob_img_ads';
-                        $img_url = $info['photos'][0];
+                        $img_url = $images1;
                     }
                      else{
                         $img = '';
-                        $img_url = 'img/noimage.jpg';
+                        $img_url = 'noimage.jpg';
                     }
-                    echo "<div class = 'rand_list ".$info['type']."'>
+                    echo "<div class = 'rand_list '>
                             <div class='img_list'>
-                                <a href='".base_url('category/ads/'.$v['id'])."'><img class='".$img."' src='".base_url($img_url)."'></a>
+                                <a href='".base_url('category/ads/'.$v['id'])."'><img class='".$img."' src='".base_url('./uploads/'.$img_url)."'></a>
                             </div>
                             <div class='name_list'><a href='".base_url('category/ads/'.$v['id'])."'> ".$v['name']."</a></div>
                                 <div class='price'>".$info['price']."</div>

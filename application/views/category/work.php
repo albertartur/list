@@ -19,13 +19,6 @@
 				<input id="gorc" type="checkbox" name="">
 				<label for="gorc">Գործակալություն</label>
 			</div>
-			<div class="border"></div>
-			<h4>Տարածաշրջան</h4>
-			<select class="input-sm" name="" id="val">
-				<option>Armenia</option>
-			</select>
-			<div class="border"></div>
-			<h4>Կատեգորիաներ</h4>
 		</div>
 	</div>
 	<div class="col-md-9" id="main_content">

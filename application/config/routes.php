@@ -55,3 +55,6 @@ $route['category/ads'] = 'category/ads';
 $route['translate_uri_dashes'] = FALSE;
 $route['admin/home'] = 'admin/admin/home';
 $route['admin/login'] = 'admin/admin/index';
+$route['admin/subcat'] = 'admin/Admin/subcat/$1';
+$route['admin/subcat_inputs'] = 'admin/Admin/subcat_inputs/$1';
+

@@ -1,3 +1,6 @@
+<?php if($this->session->userdata('admin_session') ){ ?>
+	<a href="<?=base_url("admin/Admin/logout")?>"><input type="button" value="Logout" style="margin-left: 89%;"></a><br>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>base_url="<?=base_url()?>"</script>
 
@@ -21,3 +24,11 @@ for ($i=0; $i<count($wait_statement); $i++) {
 	echo "<td><input type='button' value='ADD_toProduct' class='add_product'></td>";
 	echo "</tr>";
 }
+
+
+
+ }
+else{
+  redirect(base_url('admin/login'));
+}
+ 
