@@ -3,11 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?=base_url('css/bootstrap.min.css'); ?>">
   <script src="<?= base_url('js/jquery-3.3.1.min.js'); ?>"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="<?=base_url('js/bootstrap.min.js'); ?>"></script>
   <link rel="stylesheet" type="text/css" href="<?= base_url('css/style.css'); ?>">
+  <link rel="stylesheet" href="<?= base_url('css/jquery-confirm.min.css'); ?>">
+  <script src="<?= base_url('js/jquery-confirm.min.js'); ?>"></script>
   <script type="text/javascript" src="<?= base_url('js/user.js'); ?>"></script>
+  <script src="<?= base_url('js/js/user_script.js'); ?>"></script>
   <script>
     base_url = "<?= base_url(); ?>"
   </script>
@@ -29,14 +32,14 @@
     	<div class="navbar-form navbar-left">
 			      <div class=" input-group ">
 			        <input type="text" class="form-control" placeholder="Search" name="search" id='search'>
-			        <div class=" input-group-btn">
-			          <button class="btn btn-default" type="submit">
-			            <i class="glyphicon glyphicon-search"></i>
-			          </button>
-
-			        </div>
-			      </div>
             <div id="search_list"></div>
+              <div class=" input-group-btn">
+                <button class="btn btn-default" type="submit">
+                  <i class="glyphicon glyphicon-search"></i>
+                </button>
+
+              </div>
+            </div>
 			</div>
       <div style="line-height: 42px;" class="nav navbar-nav navbar-right">
         <a href="<?= base_url('UsersController/show'); ?>?my_profil=Հայտարարություններ"> My Account</a>

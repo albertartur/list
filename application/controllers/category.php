@@ -10,6 +10,7 @@ class Category extends CI_Controller {
 	public function index($id)
 	{
 		if ($id < 127) {
+			$data['thiscat'] = $this->UsersModel->get_thiscat($id);
 			$data['all'] = $this->UsersModel->get_pro($id);
 			$data['top'] = $this->UsersModel->get_top_pro($id);
 		}
@@ -26,6 +27,7 @@ class Category extends CI_Controller {
 		$data['all'] = $this->UsersModel->get_pro_ads($id);
 		$data['rand'] = $this->UsersModel->get_rand_ads($id);
 		$data['user'] = $this->UsersModel->get_user_ads($id);
+
 		$this->load->view('category/ads',$data);
 		$this->load->view('footer');
 	}

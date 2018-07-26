@@ -206,7 +206,7 @@ textarea{
 }
 
 .main{
-	padding-top: 85px;
+	margin-top: 85px;
 	min-height: 91vh;
 }
 #main_reclame>img{
@@ -434,19 +434,25 @@ input:focus,select:focus{
 	padding-left: 20px;
 	padding-right: 20px;
 	padding-top: 10px;
+	padding-bottom: 40px;
 }
 .top_products_grid{
-	display: inline-block;
-	width: 32%;
-	height: 100%;
-	transition: .6s ease-in;
-	margin-left: 7px;
+	display: inline-grid;
+    width: 250px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    margin-left: 9px;
+    margin-top: 7px;
+    transition: .6s ease-in;
+    vertical-align: top;
+    height: 244px;
 }
 .top_products_grid>a{
 	padding: 100px;
 }
 .top_products_grid:hover{
-	background: rgba(0,0,0,0.1);
+	 box-shadow: 0 4px 8px 0 rgba(244,82,67, 0.7), 0 6px 20px 0 rgba(244,82,67, 0.8);
+	 background: rgba(197,255,5);
 }
 .top_products_list{
 	width: 100%;
@@ -458,32 +464,54 @@ input:focus,select:focus{
 	background: #fff;
 	padding-left: 20px;
 	padding-right: 20px;
+	padding-bottom: 40px;
+
 }
 .ord_products_grid{
-	display: inline-block;
-	width: 32%;
-	height: 201px;
-	margin-left: 7px;
-	transition: .6s ease-in;
+	display: inline-grid;
+    width: 250px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    margin-left: 9px;
+    margin-top: 7px;
+    transition: .6s ease-in;
+    vertical-align: top;
+    height: 244px;
+
 }
 .ord_products_list{
 	width: 100%;
 	height: 201px;
 	transition: .6s ease-in;
 	border-bottom: 1px solid #ccc;
+	vertical-align: top;
+
 }
 .work_list{
 	padding: 20px;
 	border-bottom: 1px solid #ccc;
 }
+.img_list img{
+ 	width:100%;
+ 	height:162px;
+ 	transition: .5s ease-in
+}
 .ord_products_grid:hover{
-	background: rgba(0,0,0,0.1);
+	 box-shadow: 0 4px 8px 0 rgba(244,82,67, 0.7), 0 6px 20px 0 rgba(244,82,67, 0.8);
+}
+.ord_products_grid:hover .img_list img{
+	 transform: scale(1.04,1.04);
+}
+.top_products_grid:hover .img_list img{
+	 transform: scale(1.04,1.04);
 }
 .rand_list{
 	transition: 1s;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 .rand_list:hover{
-	background: rgba(62,185,235,0.4);
+	box-shadow: 0 4px 8px 0 rgba(98,90,255, 0.7), 0 6px 20px 0 rgba(244,82,67, 0.8);
 	color: black;
 }
 .iconc{
@@ -515,10 +543,6 @@ input:focus,select:focus{
 	background: #fff;
 	box-shadow: 0px 0px 8px -1px #ccc;
 
-}
-.img_list img{
- 	width:100%;
- 	height:162px
 }
 #img_ads{
 	margin: 0 auto;
@@ -655,14 +679,14 @@ input:focus,select:focus{
 	padding-right: 20px;
 }
 #search_list{
-	width: 214px;
+	width: 235px;
     min-height: 30px;
     background: #fff;
     border: 0.3px solid #ccc;
     position: absolute;
-    top: 46px;
+    top: 34px;
     z-index: 1320;
-    left: 355px;
+    left: 0;
     padding: 5px;
     display: none;
     border-color: #66afe9;

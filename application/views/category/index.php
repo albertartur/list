@@ -1,13 +1,8 @@
 <div id="content" class="container">
 	<div class="container">
 		<div class="col-md-10">
-			<ol class="breadcrumb col-md-10">
-			  <li><a href="#">Home</a></li>
-			  <li><a href="#">Library</a></li>
-			  <li class="active">Data</li>
-			</ol>
 		</div>
-		<div class="col-md-2">
+		<div style="height: 40px;vertical-align: top" class="col-md-2">
 			<img class="iconc" id="list" src="<?= base_url('img/list.png'); ?>">
 			<img class="iconc" id="grid" src="<?= base_url('img/grid.png'); ?>">
 		</div>
@@ -66,6 +61,12 @@
 				</select>
 				<div class="border"></div>
 				<h4>Categories</h4>
+
+				<?php
+					foreach ($thiscat as $val_cat) {
+						echo "<li data-id={$val_cat['id']} class='li' ><a href='".base_url('category/index/'.$val_cat['id'])."'>".$val_cat['name']."</a></li>";
+					}
+				?>
 			</div>
 		</div>
 	</div>
@@ -76,27 +77,38 @@
 				foreach ($top as $value0) {
 					if (intval($value0['sub_id']) < 101) {
 						$info0 = unserialize($value0['info_array']);
+
 						if (!empty($info0['photos'][0])) {
 							$img = 'ob_img_ads';
-							$img_url = $info0['photos'][0];
+							$img_url = 'uploads/'.$info0['photos'][0];
 						}
 						else{
 							$img = '';
-							$img_url = 'img/noimage.jpg';
+							$img_url = 'uploads/noimage.jpg';
 						}
-						echo "<div class = 'top_products_grid ".$info0['type']."'>
+
+
+						if (isset($info0['type'])) {
+							$type = $info0['type'];
+							
+						}
+						else{
+							$type = $info0['typemin'];
+						}
+						echo "<div class = 'top_products_grid ".$type."'>
 									<div class='img_list'>
 										<a href='".base_url('category/ads/'.$value0['id'])."'><img class='".$img."' src='".base_url($img_url)."'></a>
 									</div>
 									<div class='name_list'><a href='".base_url('category/ads/'.$value0['id'])."'> ".$value0['name']."</a></div>
-										<span class='price'>".$info0['price']." </span><span class='currency'> ".$info0['currency']."</span>
+									<div>
+										<span class='price'>".$info0['price']." </span><span class='currency'> ".$info0['currency']."</span></div>
 									</div>";
 					}
 					else{
 						$info0 = unserialize($value0['info_array']);
-						if (!empty($info0['photos'][0])) {
+						if (!empty($info0['photos'])) {
 							$img = 'ob_img_ads';
-							$img_url = $info0['photos'][0];
+							$img_url = 'uploads/'.$info0['photos'][0];
 						}
 						else{
 							$img = '';
@@ -116,30 +128,41 @@
 		<div class="ord_products">
 			<h2>Regular Ads</h2>
 			<?php
+			
 				foreach ($all as $val) {
 					if (intval($val['sub_id']) < 101) {
 									$info = unserialize($val['info_array']);
 									if (!empty($info['photos'][0])) {
 										$img = 'ob_img_ads';
-										$img_url = $info['photos'][0];
+										$img_url = 'uploads/'.$info['photos'][0];
 									}
 									else{
 										$img = '';
 										$img_url = 'img/noimage.jpg';
 									}
-									echo "<div class = 'ord_products_grid ".$info['type']."'>
+
+									if (isset($info0['type'])) {
+										$type = $info0['type'];
+										
+									}
+									else{
+										$type = $info0['typemin'];
+									}
+									echo "<div class = 'ord_products_grid ".$type."'>
 									<div class='img_list'>
 										<a href='".base_url('category/ads/'.$val['id'])."'><img class='".$img."' src='".base_url($img_url)."'></a>
 									</div>
 									<div class='name_list'><a href='".base_url('category/ads/'.$val['id'])."'> ".$val['name']."</a></div>
+										<div>
 										<span class='price'>".$info['price']." </span><span class='currency'> ".$info['currency']."</span>
+										</div>
 									</div>";
 					}
 					else{
 						$info0 = unserialize($value0['info_array']);
-							if (!empty($info0['photos'][0])) {
+							if (!empty($info0['photos'])) {
 								$img = 'ob_img_ads';
-								$img_url = $info0['photos'][0];
+								$img_url = 'uploads/'.$info0['photos'][0];
 							}
 							else{
 								$img = '';
@@ -155,7 +178,6 @@
 				}
 
 			?>
-			<div class="border"></div>
 		</div>
 	</div>
 </div>

@@ -1,32 +1,46 @@
+<div class="container content-sm user-my">  
+  
+<?php if(count($check)==0){ ?>
 
-<div class="container content-sm user-my">	
-		<div id="user-info">
-			<!-- <h4>Այս պահին Դուք չունեք գործող հայտարարություններ:
-			</h4>
-			<a class="btn-a" href="">Ավելացնել հայտարարություն</a> -->
+   <h4>Այս պահին Դուք չունեք գործող հայտարարություններ:</h4>
+   <a class="btn-a" href="">Ավելացնել հայտարարություն</a>
+
+<?php  }   ?>
 
 
-			<div class="row">
-				<div class="col-md-10">name</div>
-				<div class="col-md-2 text-right">
-					 <img width="24px" src="<?= base_url('img/renew.png'); ?>">
-					 <img width="24px" src="<?= base_url('img/edit.png'); ?>">
-					 <img width="24px" src="<?= base_url('img/del.png'); ?>">
-				</div>
-			</div>
 
-			<div class="row">
-				<div class="col-md-2">
-					<div data-toggle="modal" data-target="#top" class="col-md-4">
-			            <img width="52px" src="<?= base_url('img/top.png'); ?>">
-					</div>
-					<div  data-toggle="modal" data-target="#free" class="col-md-4">
-			            <img width="52px" src="<?= base_url('img/free.png'); ?>">
-			         </div>
-				</div>
-			</div>
-		</div>		
-	</div>
+<?php
+     foreach ($check as $key=>$value) 
+     {
+        if(count($value['us_id'])>0)
+   {
+?>
+
+    <div id="user-info">
+  
+
+      <div class="row">
+        <div class="col-md-10"><a href="<?= base_url(); ?>"><?= $value['name']; ?></a></div>
+        <div class="col-md-2 text-right">
+           <img class="edit" id="<?= $value['id']; ?>" width="24px" src="<?= base_url('img/renew.png'); ?>">
+           <img width="24px" src="<?= base_url('img/edit.png'); ?>">
+           <img class="del"  id="<?= $value['id']; ?>" width="24px" src="<?= base_url('img/del.png'); ?>">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <div data-toggle="modal" data-target="#top" class="col-md-4">
+                  <img width="52px" src="<?= base_url('img/top.png'); ?>">
+          </div>
+          <div  data-toggle="modal" data-target="#free" class="col-md-4">
+                  <img width="52px" src="<?= base_url('img/free.png'); ?>">
+               </div>
+        </div>
+      </div>
+    </div>  
+    <?php }} ?> 
+  </div>
 </div>
 
 
@@ -90,16 +104,35 @@
         </ol>
         <div class="border"></div>
         <div class="row">
-        	<div class="col-md-4">
-        		<img width="150px"  src="<?= base_url('img/po_cards.png'); ?>">
-        	</div>
-        	<div class="col-md-4">
-        		<img width="150px" src="<?= base_url('img/po_paypal.png'); ?>">
-        	</div>
-        	<div class="col-md-4">
-        		<img width="150px" src="<?= base_url('img/po_sms.png'); ?>">
-        	</div>
-        	
+          <div class="col-md-4">
+            <img width="150px"  src="<?= base_url('img/po_cards.png'); ?>">
+          </div>
+          <div class="col-md-4">
+            <img width="150px" src="<?= base_url('img/po_paypal.png'); ?>">
+          </div>
+          <div class="col-md-4">
+            <img width="150px" src="<?= base_url('img/po_sms.png'); ?>">
+          </div>
+             
+            <!-- payment_system  -->
+          <div class="col-md-4">
+
+            <form action="<?= base_url('UsersController/payment_system'); ?>" method="POST">
+
+                  <script
+                   src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                   data-key="pk_test_dHlf2yN1QsjmfW5aVCIR0hZq"
+                   data-amount="10000"
+                   data-name="Demo Site"
+                   data-description="Example charge"
+                   data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                   data-locale="auto">
+                 </script>
+
+              </form>
+
+          </div>
+          <!-- payment_system  -->
         </div>
       </div>
       <div class="modal-footer">

@@ -22,10 +22,19 @@
     })
     
 </script>
+
+
 <div class="main">
     <div class=" container bot">
         <div class='col-md-7'>
-            <span>What type of posting would you like to add</span>
+            <span><?php 
+                if($way['sec']==1){
+                    echo "Marketplace >".$way['cat']." > ".$way['sub'] ;
+                }
+                else 
+                    echo $way['cat']." > ".$way['sub'] ;
+                ?>
+            </span>
         </div>
         <div class="col-md-1">
             <center>
@@ -49,6 +58,7 @@
         </div>
     </div>
     <div class="container  content-sm" id="view_2">
+        
         <div id='mm' class="form-group" >
             <div class="row ip" id='location'>
                 <div class="col-md-3 text-right pad"><label for='id_location'>Location</label></div>
@@ -721,7 +731,7 @@
                     <label for='id_price'>Price</label>
                 </div>
                 <div class="col-md-8">
-                    <input maxlength="12" name="price" id="id_price" type="text" class='inp inp-sm'>
+                    <input  name="price" id="id_price" type="text" class='inp inp-sm'>
                     <select name="currency" id="id_currency" class='inp-xs'>
                         <option value="0" selected="selected">AMD</option>
                         <option value="1">USD</option>
@@ -766,7 +776,7 @@
                     <label for='id_description'>Description</label>
                 </div>
                 <div class="col-md-8">
-                    <input maxlength="200" class="inp inp-xxl" name="desc" id="id_description" type="text" placeholder="Detailed Description of your item or offering..." autocomplete="off">
+                    <textarea cols="30" rows="10" class="inp inp-xxl" name="desc" id="id_description" type="text" placeholder="Detailed Description of your item or offering..." autocomplete="off"></textarea>
                 </div>
             </div>
             <div class="row ip" id='photos'>
@@ -777,8 +787,8 @@
                     <label for='id_photos'>
                         <div class="btn btn-primary"> ADD PHOTO</div>
                     </label>
-                    <input style="display:none;" maxlength="200" class="inp inp-ml" name="photos" id="id_photos" type='file' multiple="multipart/form-data">
-                    <div id="list"></div>
+                      <input style="display:none;"  class="inp inp-ml" name="file[]" id="id_photos" type='file' multiple/>
+            <div id="list"></div>
                 </div>
             </div>
             <div class='borderdot'></div>
@@ -853,7 +863,7 @@
             <div>
                 <div class="col-md-3 text-right pad"></div>
                 <div class="col-md-8 pad">
-                    <button id="add_preview" class="btn btn-primary">Preview</button>
+                    <span id="add_preview" class="btn btn-primary">Preview</span>
                 </div>
             </div>
         </div>
@@ -863,19 +873,20 @@
         <div id="content" class="container">
             <div class="col-md-9" id="main_content_ads">
                 <h2 id="name_ads">  </h2>
-                <div id="sp">	
+                <div id="sp">   
                     <span id="price_ads">  </span><span id="Exchange"> </span> <span id="country_ads" class="glyphicon glyphicon-globe"> </span>
                 </div>
                 <div id="img_ads_d"> </div>
-                <div class="row" id='info'>							
+                <div class="row" id='info'>                         
                 </div>
                 <div id="txt_ads" class="txt-ad"> </div>
                 <div class="row" id="control_ads">
                     <div class="col-md-2">
-                        <button id="post_ads" class="btn-a">Ավելացնել</button>		
-                    </div>
+                        <button id="post_ads" type="submit" class="btn-a">Ավելացնել</button>        
+<!--             </form>
+                     -->                    </div>
                     <div class="col-md-2">
-                        <button id="update_ads" class="btn-a">Փոփոխել</button>		
+                        <button id="update_ads" class="btn-a">Փոփոխել</button>      
                     </div>
                     <div class="col-md-2">
                         <a href="<?= base_url('UsersController/show?my_profil=%D5%80%D5%A1%D5%B5%D5%BF%D5%A1%D6%80%D5%A1%D6%80%D5%B8%D6%82%D5%A9%D5%B5%D5%B8%D6%82%D5%B6%D5%B6%D5%A5%D6%80'); ?>" id="delet_ads" class="btn btn-warning">Ընդհատել</a>
@@ -901,11 +912,11 @@
 			                     $info = unserialize($v['info_array']);
 			                     if (!empty($info['photos'][0])) {
 			                        $img = 'ob_img_ads';
-			                        $img_url = $info['photos'][0];
+			                        $img_url = './uploads/'.$info['photos'][0];
 			                    }
 			                     else{
 			                        $img = '';
-			                        $img_url = 'img/noimage.jpg';
+			                        $img_url = './uploads/noimage.jpg';
 			                    }
 			                    echo "<div class = 'rand_list ".$info['type']."'>
 			                            <div class='img_list'>
